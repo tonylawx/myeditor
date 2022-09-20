@@ -35,6 +35,7 @@ import Daterange from './fields/Daterange.vue';
 import DateTime from './fields/DateTime.vue';
 import Display from './fields/Display.vue';
 import DynamicField from './fields/DynamicField.vue';
+import GoodsSelector from './fields/GoodsSelector.vue';
 import Hidden from './fields/Hidden.vue';
 import Link from './fields/Link.vue';
 import Number from './fields/Number.vue';
@@ -120,6 +121,7 @@ const install = (app: App, opt: any) => {
   app.component(Select.name, Select);
   app.component(Cascader.name, Cascader);
   app.component(DynamicField.name, DynamicField);
+  app.component(GoodsSelector.name, GoodsSelector);
 };
 
 export default {

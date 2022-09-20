@@ -39,6 +39,11 @@ export default [
         text: '二维码',
         type: 'qrcode',
       },
+      {
+        icon: Grid,
+        text: '商品筛选',
+        type: 'goods',
+      },
     ],
   },
   {

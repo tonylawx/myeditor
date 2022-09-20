@@ -18,6 +18,7 @@
 
 import Button from './button';
 import Container from './container';
+import GoodsDisplay from './goodsDisplay';
 import Img from './img';
 import Overlay from './overlay';
 import Page from './page';
@@ -32,6 +33,7 @@ const ui: Record<string, any> = {
   img: Img,
   qrcode: Qrcode,
   overlay: Overlay,
+  goods: GoodsDisplay,
 };
 
 export default ui;
