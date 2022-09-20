@@ -73,6 +73,11 @@ export default defineConfig({
         changeOrigin: true,
         prependPath: false,
       },
+      '/api/': {
+        target: 'https://devapi.betterwood.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
     },
     open: '/tmagic-editor/playground/',
   },

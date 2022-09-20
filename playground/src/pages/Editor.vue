@@ -47,6 +47,8 @@ import { asyncLoadJs } from '@tmagic/utils';
 import DeviceGroup from '../components/DeviceGroup.vue';
 import componentGroupList from '../configs/componentGroupList';
 import dsl from '../configs/dsl';
+import { login } from '../services/login/index';
+import { useMainStore } from '../store/main';
 
 const { VITE_RUNTIME_PATH, VITE_ENTRY_PATH } = import.meta.env;
 
@@ -67,6 +69,17 @@ const stageRect = ref({
 const previewUrl = computed(
   () => `${VITE_RUNTIME_PATH}/page/index.html?localPreview=1&page=${editor.value?.editorService.get('page').id}`,
 );
+
+const store = useMainStore();
+const loginin = async () => {
+  const loginRes = await login({
+    username: 'admin',
+    password: '123456',
+  });
+  store.update_token(`Bearer ${loginRes.access_token}`);
+  ElMessage.success('登陆成功！');
+};
+loginin();
 
 const menu: MenuBarData = {
   left: [

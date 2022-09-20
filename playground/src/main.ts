@@ -30,6 +30,7 @@ import MagicEditor from '@tmagic/editor';
 import MagicForm from '@tmagic/form';
 import MagicTable from '@tmagic/table';
 
+import pinia from './store/index';
 import App from './App.vue';
 import router from './route';
 
@@ -59,6 +60,7 @@ monaco.languages.typescript.typescriptDefaults.setEagerModelSync(true);
 
 const app = createApp(App);
 app.use(router);
+app.use(pinia);
 app.use(ElementPlus, {
   locale: zhCn,
 });

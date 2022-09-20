@@ -63,6 +63,8 @@ module.exports = {
           ["^.+\\.s?css$"],
         ],
       }
-    ]
+    ],
+    '@typescript-eslint/naming-convention': 'off',
+    'prefer-destructuring':'off'
   },
 };
