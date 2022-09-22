@@ -18,6 +18,11 @@
 
 export default [
   {
+    type: 'title-config',
+    text: '标题',
+    name: 'title',
+  },
+  {
     type: 'picture-selector',
     text: '图片选择',
     name: 'pictures',

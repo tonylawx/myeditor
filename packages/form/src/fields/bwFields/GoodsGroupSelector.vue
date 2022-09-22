@@ -122,7 +122,7 @@
   </el-dialog>
 </template>
 <script lang="ts" setup>
-import {computed, defineProps, inject, reactive, ref,watch} from 'vue';
+import { defineProps,  reactive, ref,watch} from 'vue';
 import draggable from 'vuedraggable';
 import { ElTable } from 'element-plus';
 import { findIndex } from 'lodash-es';
