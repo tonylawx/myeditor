@@ -2,6 +2,7 @@
   <div>
     商品数据:
     <pre>{{ JSON.stringify(config.goods, null, 4) }}</pre>
+    <pre>{{ JSON.stringify(config.goods1, null, 4) }}</pre>
   </div>
 </template>
 <script lang="ts"></script>

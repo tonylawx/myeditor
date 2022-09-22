@@ -141,8 +141,15 @@ const props = defineProps({
 useAddField(props.prop);
 const emit = defineEmits(['change'])
 console.log(props)
+console.log(props.model.name)
 
-const res = reactive(cloneDeep(props.model[props.model.type]))
+const res = reactive(Object.assign({},{
+  groupNameUnpicked: '',
+  groupNamePicked: '',
+  groupBgUnpicked: '',
+  groupBgPicked: '',
+  groups: [],
+},cloneDeep(props.model[props.name])))
 // table实例
 const multipleTableRef = ref<InstanceType<typeof ElTable>>();
 // 对话框flag

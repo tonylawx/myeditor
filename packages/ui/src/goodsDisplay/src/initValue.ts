@@ -19,7 +19,7 @@
 export default {
   text: '测试文字',
   goods: {
-    groupNameUnpicked: '',
+    groupNameUnpicked: '#E05555',
     groupNamePicked: '',
     groupBgUnpicked: '',
     groupBgPicked: '',

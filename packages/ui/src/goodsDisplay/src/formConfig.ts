@@ -23,6 +23,11 @@ export default [
     name: 'goods',
   },
   {
+    type: 'goods-selector',
+    text: '商品选择',
+    name: 'goods1',
+  },
+  {
     type: 'text',
     text: '商品选择',
     name: 'text',
