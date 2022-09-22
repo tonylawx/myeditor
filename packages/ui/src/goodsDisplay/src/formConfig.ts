@@ -18,6 +18,11 @@
 
 export default [
   {
+    type: 'hover-window-config',
+    text: '悬浮窗',
+    name: 'window',
+  },
+  {
     type: 'countdown-config',
     text: '倒计时',
     name: 'countdown',
