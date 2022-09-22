@@ -18,6 +18,11 @@
 
 export default [
   {
+    type: 'video-config',
+    text: '视频',
+    name: 'video',
+  },
+  {
     type: 'title-config',
     text: '标题',
     name: 'title',

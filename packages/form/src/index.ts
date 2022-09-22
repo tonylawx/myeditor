@@ -28,7 +28,8 @@ import Table from './containers/Table.vue';
 import Tabs from './containers/Tabs.vue';
 import GoodsGroupSelector from './fields/bwFields/GoodsGroupSelector.vue';
 import PictureSelector from './fields/bwFields/PictureSelector.vue';
-import TItleConfig from './fields/bwFields/TItleConfig.vue';
+import TitleConfig from './fields/bwFields/TItleConfig.vue';
+import VideoConfig from './fields/bwFields/VideoConfig.vue';
 import Cascader from './fields/Cascader.vue';
 import Checkbox from './fields/Checkbox.vue';
 import CheckboxGroup from './fields/CheckboxGroup.vue';
@@ -125,7 +126,8 @@ const install = (app: App, opt: any) => {
   app.component(DynamicField.name, DynamicField);
   app.component(GoodsGroupSelector.name, GoodsGroupSelector);
   app.component(PictureSelector.name, PictureSelector);
-  app.component(TItleConfig.name, TItleConfig);
+  app.component(TitleConfig.name, TitleConfig);
+  app.component(VideoConfig.name, VideoConfig);
 };
 
 export default {
