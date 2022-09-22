@@ -26,6 +26,7 @@ import Row from './containers/Row.vue';
 import MStep from './containers/Step.vue';
 import Table from './containers/Table.vue';
 import Tabs from './containers/Tabs.vue';
+import CountdownConfig from './fields/bwFields/CountdownConfig.vue';
 import GoodsGroupSelector from './fields/bwFields/GoodsGroupSelector.vue';
 import PictureSelector from './fields/bwFields/PictureSelector.vue';
 import TitleConfig from './fields/bwFields/TItleConfig.vue';
@@ -128,6 +129,7 @@ const install = (app: App, opt: any) => {
   app.component(PictureSelector.name, PictureSelector);
   app.component(TitleConfig.name, TitleConfig);
   app.component(VideoConfig.name, VideoConfig);
+  app.component(CountdownConfig.name, CountdownConfig);
 };
 
 export default {

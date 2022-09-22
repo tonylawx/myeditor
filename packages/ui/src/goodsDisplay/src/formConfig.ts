@@ -18,6 +18,11 @@
 
 export default [
   {
+    type: 'countdown-config',
+    text: '倒计时',
+    name: 'countdown',
+  },
+  {
     type: 'video-config',
     text: '视频',
     name: 'video',

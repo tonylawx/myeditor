@@ -3,14 +3,14 @@
 <template>
   <div>
     <el-form>
-      <el-form-item label="标题文案">
-        <el-button>上传视频</el-button>
-        <span>视频建议大小为：1920*1080, 视频比例是16:9</span>
+      <el-form-item label="开始时间">
+          <el-date-picker type="datetime" v-model="res.startTime"/>
       </el-form-item>
-      <el-form-item label="视频图片">
-        <el-upload>
-          <el-icon  class="avatar-uploader-icon"><Plus /></el-icon>
-        </el-upload>
+      <el-form-item label="结束时间">
+        <el-date-picker type="datetime" v-model="res.endTime"/>
+      </el-form-item>
+      <el-form-item label="活动名称">
+          <el-input v-model="res.activityName"/>
       </el-form-item>
     </el-form>
   </div>
@@ -20,8 +20,7 @@ import { defineProps, reactive, ref,watch} from 'vue';
 import fieldProps from '../../utils/fieldProps';
 import { useAddField } from '../../utils/useAddField';
 import {cloneDeep} from "lodash-es";
-import { MVideoCom} from "../../../../bwComponentType";
-import { Plus } from '@element-plus/icons-vue'
+import {MCountCom} from "../../../../bwComponentType";
 
 const props = defineProps({
   ...fieldProps,
@@ -35,9 +34,10 @@ useAddField(props.prop);
 const emit = defineEmits(['change'])
 
 const res = reactive(Object.assign({},{
-  url: '',
-  bgUrl: ''
-},cloneDeep(props.model[props.name]))) as MVideoCom
+  startTime: '',
+  endTime: '',
+  activityName: ''
+},cloneDeep(props.model[props.name]))) as MCountCom
 // table实例
 // 对话框flag
 const dialogVisible = ref(false);
@@ -48,6 +48,6 @@ watch(res, (value) => {
 
 <script lang="ts">
 export default {
-  name: 'm-fields-video-config',
+  name: 'm-fields-countdown-config',
 };
 </script>
