@@ -38,7 +38,7 @@
 }
 </style>
 <template>
-  <div class="goods-selector">
+  <div class="goods-selector" >
     <el-form label-position="left" :label-width="120">
       <el-form-item label="分组名称未选中颜色">
         <el-color-picker v-model.lazy="res.groupNameUnpicked" />
@@ -126,8 +126,8 @@ import {computed, defineProps, inject, reactive, ref,watch} from 'vue';
 import draggable from 'vuedraggable';
 import { ElTable } from 'element-plus';
 import { findIndex } from 'lodash-es';
-import fieldProps from '../utils/fieldProps';
-import { useAddField } from '../utils/useAddField';
+import fieldProps from '../../utils/fieldProps';
+import { useAddField } from '../../utils/useAddField';
 import {cloneDeep} from "lodash-es";
 
 const props = defineProps({
@@ -140,8 +140,6 @@ const props = defineProps({
 
 useAddField(props.prop);
 const emit = defineEmits(['change'])
-console.log(props)
-console.log(props.model.name)
 
 const res = reactive(Object.assign({},{
   groupNameUnpicked: '',
@@ -225,6 +223,6 @@ watch(res, (value) => {
 
 <script lang="ts">
 export default {
-  name: 'm-fields-goods-selector',
+  name: 'm-fields-goods-group-selector',
 };
 </script>

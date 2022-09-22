@@ -26,6 +26,8 @@ import Row from './containers/Row.vue';
 import MStep from './containers/Step.vue';
 import Table from './containers/Table.vue';
 import Tabs from './containers/Tabs.vue';
+import GoodsGroupSelector from './fields/bwFields/GoodsGroupSelector.vue';
+import PictureSelector from './fields/bwFields/PictureSelector.vue';
 import Cascader from './fields/Cascader.vue';
 import Checkbox from './fields/Checkbox.vue';
 import CheckboxGroup from './fields/CheckboxGroup.vue';
@@ -35,7 +37,6 @@ import Daterange from './fields/Daterange.vue';
 import DateTime from './fields/DateTime.vue';
 import Display from './fields/Display.vue';
 import DynamicField from './fields/DynamicField.vue';
-import GoodsSelector from './fields/GoodsSelector.vue';
 import Hidden from './fields/Hidden.vue';
 import Link from './fields/Link.vue';
 import Number from './fields/Number.vue';
@@ -121,7 +122,8 @@ const install = (app: App, opt: any) => {
   app.component(Select.name, Select);
   app.component(Cascader.name, Cascader);
   app.component(DynamicField.name, DynamicField);
-  app.component(GoodsSelector.name, GoodsSelector);
+  app.component(GoodsGroupSelector.name, GoodsGroupSelector);
+  app.component(PictureSelector.name, PictureSelector);
 };
 
 export default {

@@ -18,18 +18,13 @@
 
 export default [
   {
-    type: 'goods-selector',
-    text: '商品选择',
-    name: 'goods',
+    type: 'picture-selector',
+    text: '图片选择',
+    name: 'pictures',
   },
   {
-    type: 'goods-selector',
-    text: '商品选择',
-    name: 'goods1',
-  },
-  {
-    type: 'text',
-    text: '商品选择',
-    name: 'text',
+    type: 'goods-group-selector',
+    text: '商品分组选择',
+    name: 'goodsGroup',
   },
 ];

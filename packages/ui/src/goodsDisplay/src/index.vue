@@ -1,13 +1,16 @@
 <template>
   <div>
-    商品数据:
-    <pre>{{ JSON.stringify(config.goods, null, 4) }}</pre>
-    <pre>{{ JSON.stringify(config.goods1, null, 4) }}</pre>
+    <div v-for="(item, index) in fieldNames" :key="index">
+      {{ item }}:
+      <pre>{{ JSON.stringify(config[item], null, 4) }}</pre>
+    </div>
   </div>
 </template>
 <script lang="ts"></script>
-<script setup>
+<script setup lang="ts">
 import { defineProps } from 'vue';
+
+import formConfig from './formConfig';
 
 const props = defineProps({
   config: {
@@ -20,4 +23,5 @@ const props = defineProps({
     default: () => ({}),
   },
 });
+const fieldNames = formConfig.map((item) => item.name);
 </script>
