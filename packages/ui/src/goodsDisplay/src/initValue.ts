@@ -16,34 +16,4 @@
  * limitations under the License.
  */
 
-export default {
-  text: '测试文字',
-  goodsGroup: {
-    groupNameUnpicked: '#E05555',
-    groupNamePicked: '',
-    groupBgUnpicked: '',
-    groupBgPicked: '',
-    groups: [
-      {
-        name: '测试分组',
-        groupStyle: 'single',
-        goods: [
-          {
-            name: '测试商品1',
-            price: '100',
-            merchant: '商家1',
-            type: '分类1',
-            id: '1',
-          },
-          {
-            name: '测试商品2',
-            price: '101',
-            merchant: '商家2',
-            type: '分类2',
-            id: '2',
-          },
-        ],
-      },
-    ],
-  },
-};
+export default {};

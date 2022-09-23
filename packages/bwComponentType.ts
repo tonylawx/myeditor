@@ -1,4 +1,4 @@
-import { MComponent } from './ui/src/types';
+import { MComponent } from '../packages/ui/src/types';
 
 export interface IImgItem {
   url: string;
@@ -19,7 +19,6 @@ export interface MImgComItem {
   comType: ImgComType; // swiper：轮播 single：单图 columnTwo：两列 columnThree：三列 columnFour：四列 GridFour：四宫格 GridFive：五宫格 GridTian：田字格
   swiperOptions?: {
     auto: boolean;
-    duration: string;
   };
 }
 export interface MGoodComItem {

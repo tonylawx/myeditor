@@ -6,7 +6,6 @@
     </div>
   </div>
 </template>
-<script lang="ts"></script>
 <script setup lang="ts">
 import { defineProps } from 'vue';
 

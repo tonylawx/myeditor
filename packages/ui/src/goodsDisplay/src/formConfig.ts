@@ -18,6 +18,11 @@
 
 export default [
   {
+    type: 'goods-list-selector',
+    text: '商品',
+    name: 'goods',
+  },
+  {
     type: 'hover-window-config',
     text: '悬浮窗',
     name: 'window',

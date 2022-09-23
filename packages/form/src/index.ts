@@ -28,6 +28,7 @@ import Table from './containers/Table.vue';
 import Tabs from './containers/Tabs.vue';
 import CountdownConfig from './fields/bwFields/CountdownConfig.vue';
 import GoodsGroupSelector from './fields/bwFields/GoodsGroupSelector.vue';
+import GoodsListSelector from './fields/bwFields/GoodsListSelector.vue';
 import HoverWindowConfig from './fields/bwFields/HoverWindowConfig.vue';
 import PictureSelector from './fields/bwFields/PictureSelector.vue';
 import TitleConfig from './fields/bwFields/TItleConfig.vue';
@@ -132,6 +133,7 @@ const install = (app: App, opt: any) => {
   app.component(VideoConfig.name, VideoConfig);
   app.component(CountdownConfig.name, CountdownConfig);
   app.component(HoverWindowConfig.name, HoverWindowConfig);
+  app.component(GoodsListSelector.name, GoodsListSelector);
 };
 
 export default {
