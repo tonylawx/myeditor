@@ -56,6 +56,7 @@ import Form from './Form.vue';
 import FormDialog from './FormDialog.vue';
 
 import './theme/index.scss';
+import 'vue-cropper/dist/index.css';
 
 export * from './schema';
 export * from './utils/form';

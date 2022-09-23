@@ -60,7 +60,7 @@
         <div class="picture-selector__groups__item__delete" @click="deleteGroup(index)">X</div>
         <el-form>
           <el-form-item  label="选择图片">
-            <el-input v-model="item.url"></el-input>
+            <UploadCustom :showCropper="false"  text="上传图片" :limit="1" urlModel v-model:url="item.url"/>
           </el-form-item>
           <el-form-item label="跳转链接">
             <el-input v-model="item.link.url"></el-input>
@@ -112,7 +112,8 @@ import { useAddField } from '../../utils/useAddField';
 import {cloneDeep} from "lodash-es";
 import {MImgCom} from "../../../../bwComponentType";
 import { ElMessage } from 'element-plus'
-
+import { UploadCustom } from './components/upload-custom'
+const fileList = ref([])
 const props = defineProps({
   ...fieldProps,
   config:{

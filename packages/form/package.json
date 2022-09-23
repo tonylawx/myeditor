@@ -34,12 +34,18 @@
     "url": "https://github.com/Tencent/tmagic-editor.git"
   },
   "dependencies": {
+    "@ant-design/icons-vue": "^6.1.0",
     "@element-plus/icons-vue": "^2.0.9",
     "@tmagic/utils": "1.1.4",
+    "ali-oss": "^6.17.1",
+    "ant-design-vue": "^3.2.12",
     "element-plus": "^2.2.6",
     "lodash-es": "^4.17.21",
+    "mime-types": "^2.1.35",
+    "short-uuid": "^4.2.0",
     "sortablejs": "^1.14.0",
     "vue": "^3.2.37",
+    "vue-cropper": "^1.0.5",
     "vuedraggable": "^4.1.0"
   },
   "peerDependencies": {
