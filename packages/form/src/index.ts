@@ -31,6 +31,7 @@ import GoodsGroupSelector from './fields/bwFields/GoodsGroupSelector.vue';
 import GoodsListSelector from './fields/bwFields/GoodsListSelector.vue';
 import HoverWindowConfig from './fields/bwFields/HoverWindowConfig.vue';
 import PictureSelector from './fields/bwFields/PictureSelector.vue';
+import RichText from './fields/bwFields/RichText.vue';
 import TitleConfig from './fields/bwFields/TItleConfig.vue';
 import VideoConfig from './fields/bwFields/VideoConfig.vue';
 import Cascader from './fields/Cascader.vue';
@@ -135,6 +136,7 @@ const install = (app: App, opt: any) => {
   app.component(CountdownConfig.name, CountdownConfig);
   app.component(HoverWindowConfig.name, HoverWindowConfig);
   app.component(GoodsListSelector.name, GoodsListSelector);
+  app.component(RichText.name, RichText);
 };
 
 export default {

@@ -37,6 +37,8 @@
     "@ant-design/icons-vue": "^6.1.0",
     "@element-plus/icons-vue": "^2.0.9",
     "@tmagic/utils": "1.1.4",
+    "@wangeditor/editor": "^5.1.18",
+    "@wangeditor/editor-for-vue": "^5.1.12",
     "ali-oss": "^6.17.1",
     "ant-design-vue": "^3.2.12",
     "element-plus": "^2.2.6",

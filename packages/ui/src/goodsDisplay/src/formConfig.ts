@@ -18,6 +18,11 @@
 
 export default [
   {
+    type: 'rich-text',
+    text: '文本编辑器',
+    name: 'rich',
+  },
+  {
     type: 'goods-list-selector',
     text: '商品',
     name: 'goods',
