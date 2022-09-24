@@ -15,7 +15,10 @@
         <LinkSelector v-model:link-option="res.link" />
       </el-form-item>
       <el-form-item label="距离底部">
-        <el-slider v-model="res.bottomDis" max="150" />px
+        <div style="display: flex;justify-content: space-between;width: 200px;">
+          <el-slider v-model="res.bottomDis" max="150" style="width: 80%"/>px
+        </div>
+        <div>建议距离150像素</div>
       </el-form-item>
     </el-form>
   </div>
