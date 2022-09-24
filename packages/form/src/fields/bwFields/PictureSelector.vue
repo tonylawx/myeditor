@@ -63,7 +63,7 @@
             <UploadCustom :showCropper="false"  text="上传图片" :limit="1" urlModel v-model:url="item.url"/>
           </el-form-item>
           <el-form-item label="跳转链接">
-            <el-input v-model="item.link.url"></el-input>
+            <LinkSelector v-model:link-option="item.link"/>
           </el-form-item>
         </el-form>
       </el-card>
@@ -113,6 +113,7 @@ import {cloneDeep} from "lodash-es";
 import {MImgCom} from "../../../../bwComponentType";
 import { ElMessage } from 'element-plus'
 import { UploadCustom } from './components/upload-custom'
+import LinkSelector from "./components/LinkSelector.vue";
 const fileList = ref([])
 const props = defineProps({
   ...fieldProps,

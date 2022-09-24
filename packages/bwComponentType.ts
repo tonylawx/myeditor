@@ -79,7 +79,7 @@ export interface MCountCom extends MComponent {
   startTime: string;
   endTime: string;
 }
-type LinkOptions =
+export type LinkOptions =
   | {
       type: 'H5'; // 1：商城小程序页面 2：商城小程序商品详情页 3：商城小程序商品分组 4：会场页面 5：视频号直播 6：自定义链接
       url: string;
@@ -89,7 +89,7 @@ type LinkOptions =
       appId: string;
       url: string;
     }
-  | { type: 'Video' };
+  | { type: 'Video'; url: string };
 /* floatcom(悬浮窗组件) */
 export interface MFloatCom extends MComponent {
   bgUrl: string;
