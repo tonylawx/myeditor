@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const getImageData = (file): Promise<{ naturalWidth: number; naturalHeight: number; src: string }> =>
   new Promise((resolve, reject) => {
     const fileReader = new FileReader();

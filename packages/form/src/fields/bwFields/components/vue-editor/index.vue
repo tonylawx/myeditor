@@ -3,7 +3,7 @@
     <div style="border: 1px solid #ccc">
       <Toolbar style="border-bottom: 1px solid #ccc" :editor="editorRef" :defaultConfig="toolbarConfig" :mode="mode" />
       <Editor
-        :style="{ height: parseInt(height) + 'px', overflowY: 'hidden' }"
+        :style="{ height: height + 'px', overflowY: 'hidden' }"
         v-model="valueHtml"
         :defaultConfig="editorConfig"
         :mode="mode"
@@ -15,10 +15,6 @@
 </template>
 
 <script lang="ts" setup>
-/**
- * wangeditor - 富文本插件
- * 文档地址:https://www.wangeditor.com/v5/menu-config.html#%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87
- */
 import { onBeforeUnmount, onMounted, ref, shallowRef } from 'vue';
 import { IToolbarConfig, SlateElement } from '@wangeditor/editor';
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue';
@@ -36,7 +32,7 @@ type ImageElement = SlateElement & {
 
 type InsertFnType = (url: string, alt: string, href: string) => void;
 
-interface Props {
+const props = withDefaults(defineProps<{
   env?: string;
   filePath?: string;
   ossConfig?: any;
@@ -49,9 +45,7 @@ interface Props {
   base64LimitSize?: number;
   videoSizeLimit?: number;
   maxNumberOfVideo?: number;
-}
-
-const props = withDefaults(defineProps<Props>(), {
+}>(), {
   env: 'dev', // 上传oss的环境 'test' | 'dev' | 'pre' | 'prod' | false
   filePath: 'rich-text/', // 图片上传的路径
   ossConfig: {} as any, // ossConfig配置
@@ -152,13 +146,13 @@ onBeforeUnmount(() => {
   editor.destroy();
 });
 
-const handleCreated = (editor) => {
+const handleCreated = (editor: { getAllMenuKeys: () => any; }) => {
   editorRef.value = editor; // 记录 editor 实例，重要！
   // getAllMenuKeys() 获取toolbar的keys，用来展示或禁用
   console.log('editor.getAllMenuKeys()---->', editor.getAllMenuKeys());
 };
 
-const handleChange = (e) => {
+const handleChange = (e: { getHtml: () => any; }) => {
   const html = e.getHtml();
   let value = valueHtml.value || '';
   if (!html || html === '<p><br></p>') {

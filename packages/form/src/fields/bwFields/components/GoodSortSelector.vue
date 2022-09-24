@@ -4,8 +4,6 @@
       <draggable
         v-model.lazy="goods"
         group="people"
-        @start="drag = true"
-        @end="drag = false"
         item-key="id"
       >
         <template #item="{ element }">
@@ -17,7 +15,7 @@
       </draggable>
     </div>
     <div class="good-sort-selector__add-good">
-      <el-link type="primary" @click="openGoodsModal(index)">添加商品</el-link
+      <el-link type="primary" @click="openGoodsModal">添加商品</el-link
       ><el-link>刷新组件数据</el-link>拖动可调节顺序
     </div>
     <div class="good-sort-selector__hint">{{ hint }}</div>
@@ -126,14 +124,11 @@ defineProps({
   },
 });
 
-const openGoodsModal = (index: number) => {
+const openGoodsModal = () => {
   dialogVisible.value = true;
   setTimeout(() => {
     multipleTableRef.value!.clearSelection();
     goods.value.forEach((row) => {
-      // TODO: improvement typing when refactor table
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
       multipleTableRef.value!.toggleRowSelection(row, true);
     });
   });
@@ -142,7 +137,7 @@ const handleModalConfirm = () => {
   dialogVisible.value = false;
   goods.value = multipleTableRef.value!.getSelectionRows();
 };
-const deleteGood = (good, goods: any) => {
+const deleteGood = (good:any, goods: any) => {
   const index = findIndex(goods, good);
   goods.splice(index, 1);
 };

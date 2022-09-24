@@ -112,9 +112,11 @@ import 'ant-design-vue/es/upload/style/css';
 import { delFromOss, uploadToOss } from '../../utils/oss';
 
 import { getImageData, handlePreview } from './utils';
+import {FileType} from "ant-design-vue/es/upload/interface";
 
 const $emit = defineEmits(['successCallback', 'update:fileList', 'update:url']);
-interface Props {
+
+const props = withDefaults(defineProps< {
   env?: string;
   filePath: string;
   ossConfig?: any;
@@ -128,14 +130,13 @@ interface Props {
   showCropper?: boolean;
   cropperProps?: any;
   fileList: any;
-  listType?: string;
+  listType?: 'text' | 'picture' | 'picture-card';
   text?: string;
   openFileDialogOnClick?: boolean;
   accept?: string;
   urlModel: boolean;
   url?: string;
-}
-const props = withDefaults(defineProps<Props>(), {
+}>(), {
   env: 'dev', // 上传oss的环境 'test' | 'dev' | 'uat' | 'prod'
   filePath: '', // 图片上传的路径
   ossConfig: {} as any, // ossConfig配置
@@ -169,7 +170,7 @@ const cropperVisible = ref<boolean>(false);
 // 截图框显示宽度
 const modalWidth = ref<number>(820);
 const cropperRef = ref();
-const fileList = ref([]);
+const fileList = ref<any>([]);
 
 let timer: any = null;
 let blobFile: any = null;
@@ -194,7 +195,7 @@ const showProps = () => {
  * @method
  * @desc 文件上传前处理方法
  */
-const beforeUpload = async (file) => {
+const beforeUpload = async (file: FileType): Promise<FileType | boolean> => {
   const { minWidth, minHeight, limit, sizeLimit, showCropper } = props;
   console.log('file ---------->', file);
 
@@ -271,7 +272,7 @@ const beforeUpload = async (file) => {
       resolve(true);
     }
   });
-};
+} ;
 
 /**
  * @method
@@ -353,7 +354,7 @@ const handleCustomUpload = async (options: any) => {
     })
     .catch((e) => {
       console.warn('[handleCustomUpload]', e);
-      message.warn('上传失败，请重新上传');
+      message.warning('上传失败，请重新上传');
     })
     .finally(() => {
       loading.value = false;
@@ -361,9 +362,9 @@ const handleCustomUpload = async (options: any) => {
 };
 
 // 移除文件
-const handleRemove = (file) => {
+const handleRemove = (file:any) => {
   const removeCb = () => {
-    const index = (props.urlModel ? fileList.value : props.fileList).findIndex((v) => v.url === file.url);
+    const index = (props.urlModel ? fileList.value : props.fileList).findIndex((v:any) => v.url === file.url);
     if (props.urlModel) {
       fileList.value.splice(index, 1);
       $emit('update:url', '');
@@ -373,7 +374,7 @@ const handleRemove = (file) => {
   };
   // 同步删除的接口还有问题，暂时只能做表面删除
   if (props.delSyncOss) {
-    const reg = file.url.match(/^(([^:\/?#]+):)?(\/\/([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?$/);
+    const reg = file.url.match(/^(([^:/?#]+):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?$/);
     delFromOss(props.ossConfig, reg[5])
       .then(() => {
         message.error(`删除成功`);
@@ -387,8 +388,8 @@ const handleRemove = (file) => {
   }
 };
 
-const reg = /(?:http(?:s|):\/\/[^\/\s]+|)([^#?]+).*/;
-const convertDsnUrl = (env, dsn: string, url: string): string => {
+const reg = /(?:http(?:s|):\/\/[^/\s]+|)([^#?]+).*/;
+const convertDsnUrl = (env: string, dsn: string, url: string): string => {
   if (!url) return '';
   if (!dsn) return url;
 
@@ -412,7 +413,7 @@ const handleCloseCropper = () => {
  * @desc 开始截图
  */
 const handleCropper = async () => {
-  cropperRef.value.getCropBlob(async (res) => {
+  cropperRef.value.getCropBlob(async (res: any) => {
     console.log(cropperRef.value.cropInfo, 'this.$refs.cropper.cropW~~~~~~');
     cutWidth = cropperRef.value.cropInfo.width;
     cutHeight = cropperRef.value.cropInfo.height;

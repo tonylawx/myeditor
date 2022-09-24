@@ -31,16 +31,16 @@
   <div class="goods-selector">
     <el-form label-position="left" :label-width="120">
       <el-form-item label="分组名称未选中颜色">
-        <el-color-picker v-model.lazy="res.groupNameUnpicked" />
-        {{ res.groupNameUnpicked }}
+        <el-color-picker v-model.lazy="res.groupNameUnPicked" />
+        {{ res.groupNameUnPicked }}
       </el-form-item>
       <el-form-item label="分组名称选中颜色">
         <el-color-picker v-model.lazy="res.groupNamePicked" />
         {{ res.groupNamePicked }}
       </el-form-item>
       <el-form-item label="分组底色未选中颜色">
-        <el-color-picker v-model.lazy="res.groupBgUnpicked" />
-        {{ res.groupBgUnpicked }}
+        <el-color-picker v-model.lazy="res.groupBgUnPicked" />
+        {{ res.groupBgUnPicked }}
       </el-form-item>
       <el-form-item label="分组底色选中颜色">
         <el-color-picker v-model.lazy="res.groupBgPicked" />

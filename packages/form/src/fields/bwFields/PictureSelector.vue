@@ -177,7 +177,7 @@ const addGroup = () => {
     height: 0,
     width: 0,
     link: {
-      type:'',
+      type:'H5',
       url:''
     }
   });
@@ -193,7 +193,7 @@ const handleModalConfirm = () => {
   dialogVisible.value = false;
   res.imgList[currentGroupIndex] = multipleTableRef.value!.getSelectionRows();
 };
-const deleteGood = (good, goods: any) => {
+const deleteGood = (good:any, goods: any) => {
   const index = findIndex(goods, good);
   goods.splice(index, 1);
 };

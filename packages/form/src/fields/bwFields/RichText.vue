@@ -7,7 +7,7 @@
 import { defineProps, reactive } from 'vue';
 import { cloneDeep } from 'lodash-es';
 
-import { useAddField } from '@tmagic/form';
+import { useAddField } from '../../utils/useAddField';
 
 import { MTextCom } from '../../../../bwComponentType';
 import fieldProps from '../../utils/fieldProps';

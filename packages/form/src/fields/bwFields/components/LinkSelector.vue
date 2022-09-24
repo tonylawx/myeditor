@@ -35,13 +35,13 @@
       </el-tabs>
       <template #footer>
         <span class="dialog-footer">
-          <el-button @click="dialogVisible = false"> 取消 </el-button>
+          <el-button @click="modalVisible = false"> 取消 </el-button>
           <el-button type="primary" @click="handleModalConfirm"> 确认 </el-button>
         </span>
       </template>
     </el-dialog>
     <div>
-      <div v-if="linkOption.url">
+      <div v-if="props.linkOption.url">
         {{ urlName }}
         <el-button @click="handleOpen">修改链接</el-button>
       </div>

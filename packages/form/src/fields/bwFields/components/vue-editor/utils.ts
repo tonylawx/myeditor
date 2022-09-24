@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { message } from 'ant-design-vue';
 import mimeTypes from 'mime-types';
 import short from 'short-uuid';

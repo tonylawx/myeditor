@@ -31,7 +31,7 @@
   <div class="goods-selector">
     <el-form label-position="left" :label-width="120">
       <el-form-item label="商品展示样式">
-        <el-radio-group v-model="res.comType">
+        <el-radio-group v-model="res.goodComItem.comType">
           <el-radio label="column"> 双列 </el-radio>
           <el-radio label="list"> 列表 </el-radio>
           <el-radio label="slide"> 侧滑 </el-radio>
@@ -47,7 +47,7 @@ import fieldProps from "../../utils/fieldProps";
 import { useAddField } from "../../utils/useAddField";
 import { cloneDeep } from "lodash-es";
 import GoodSortSelect from "./components/GoodSortSelector.vue";
-import {MGoodCom, MGroupGoodCom} from "../../../../bwComponentType";
+import {MGoodCom} from "../../../../bwComponentType";
 
 const props = defineProps({
   ...fieldProps,
@@ -64,8 +64,10 @@ const res = reactive(
   Object.assign(
     {},
     {
-      compId: '', // 获取商品组件数据的ID
-      comType:'list'
+      goodComItem:{
+        compId: '', // 获取商品组件数据的ID
+        comType:'list'
+      }
     },
     cloneDeep(props.model[props.name])
   )
