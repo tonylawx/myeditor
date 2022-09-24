@@ -3,14 +3,12 @@
 <template>
   <div>
     <el-form>
-      <el-form-item label="标题文案">
-        <el-button>上传视频</el-button>
+      <el-form-item label="视频地址">
+        <UploadCustom :showCropper="false"  list-type="text" :limit="1" urlModel v-model:url="res.url" accept="video/mp4" />
         <span>视频建议大小为：1920*1080, 视频比例是16:9</span>
       </el-form-item>
       <el-form-item label="视频图片">
-        <el-upload>
-          <el-icon  class="avatar-uploader-icon"><Plus /></el-icon>
-        </el-upload>
+        <UploadCustom :showCropper="false"  text="上传图片" :limit="1" urlModel v-model:url="res.bgUrl"/>
       </el-form-item>
     </el-form>
   </div>
@@ -21,7 +19,8 @@ import fieldProps from '../../utils/fieldProps';
 import { useAddField } from '../../utils/useAddField';
 import {cloneDeep} from "lodash-es";
 import { MVideoCom} from "../../../../bwComponentType";
-import { Plus } from '@element-plus/icons-vue'
+import { UploadCustom } from './components/upload-custom'
+
 
 const props = defineProps({
   ...fieldProps,

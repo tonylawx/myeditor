@@ -37,9 +37,9 @@
           </el-row>
             <el-row>
               <el-radio-button label="columnFour" >四列</el-radio-button>
-              <el-radio-button label="GridFour" >四宫格</el-radio-button>
-              <el-radio-button label="GridFive" >五宫格</el-radio-button>
-              <el-radio-button label="GridTian" >田字格</el-radio-button>
+              <el-radio-button label="gridFour" >四宫格</el-radio-button>
+              <el-radio-button label="gridFive" >五宫格</el-radio-button>
+              <el-radio-button label="gridTian" >田字格</el-radio-button>
             </el-row>
         </el-radio-group>
       </el-form-item>
