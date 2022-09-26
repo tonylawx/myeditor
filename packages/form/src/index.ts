@@ -32,7 +32,7 @@ import GoodsListSelector from './fields/bwFields/GoodsListSelector.vue';
 import HoverWindowConfig from './fields/bwFields/HoverWindowConfig.vue';
 import PictureSelector from './fields/bwFields/PictureSelector.vue';
 import RichText from './fields/bwFields/RichText.vue';
-import TitleConfig from './fields/bwFields/TItleConfig.vue';
+import TitleConfig from './fields/bwFields/TitleConfig.vue';
 import VideoConfig from './fields/bwFields/VideoConfig.vue';
 import Cascader from './fields/Cascader.vue';
 import Checkbox from './fields/Checkbox.vue';
@@ -91,6 +91,14 @@ export { default as MLink } from './fields/Link.vue';
 export { default as MSelect } from './fields/Select.vue';
 export { default as MCascader } from './fields/Cascader.vue';
 export { default as MDynamicField } from './fields/DynamicField.vue';
+export { default as GoodsGroupSelector } from './fields/bwFields/GoodsGroupSelector.vue';
+export { default as PictureSelector } from './fields/bwFields/PictureSelector.vue';
+export { default as TitleConfig } from './fields/bwFields/TitleConfig.vue';
+export { default as VideoConfig } from './fields/bwFields/VideoConfig.vue';
+export { default as CountdownConfig } from './fields/bwFields/CountdownConfig.vue';
+export { default as HoverWindowConfig } from './fields/bwFields/HoverWindowConfig.vue';
+export { default as GoodsListSelector } from './fields/bwFields/GoodsListSelector.vue';
+export { default as RichText } from './fields/bwFields/RichText.vue';
 
 const defaultInstallOpt = {};
 
