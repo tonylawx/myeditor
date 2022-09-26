@@ -53,7 +53,7 @@
 <script setup lang="ts">
 import { defineProps, ref } from 'vue';
 
-import type { LinkOptions } from '../../../../../bwComponentType';
+import type { LinkOptions } from '../bwComponentType';
 
 const props = defineProps<{
   linkOption: LinkOptions;

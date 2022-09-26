@@ -79,7 +79,7 @@ import fieldProps from "../../utils/fieldProps";
 import { useAddField } from "../../utils/useAddField";
 import { cloneDeep } from "lodash-es";
 import GoodSortSelect from "./components/GoodSortSelector.vue";
-import { MGroupGoodCom } from "../../../../bwComponentType";
+import { MGroupGoodCom } from "./bwComponentType";
 
 const props = defineProps({
   ...fieldProps,

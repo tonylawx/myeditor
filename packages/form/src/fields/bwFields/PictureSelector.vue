@@ -110,7 +110,7 @@ import { findIndex } from 'lodash-es';
 import fieldProps from '../../utils/fieldProps';
 import { useAddField } from '../../utils/useAddField';
 import {cloneDeep} from "lodash-es";
-import {MImgCom} from "../../../../bwComponentType";
+import {MImgCom} from "./bwComponentType";
 import { ElMessage } from 'element-plus'
 import { UploadCustom } from './components/upload-custom'
 import LinkSelector from "./components/LinkSelector.vue";

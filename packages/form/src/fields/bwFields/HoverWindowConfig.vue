@@ -28,7 +28,7 @@ import { defineProps, reactive, ref, watch } from "vue";
 import fieldProps from "../../utils/fieldProps";
 import { useAddField } from "../../utils/useAddField";
 import { cloneDeep } from "lodash-es";
-import { MFloatCom } from "../../../../bwComponentType";
+import { MFloatCom } from "./bwComponentType";
 import LinkSelector from "./components/LinkSelector.vue";
 import { UploadCustom } from "./components/upload-custom";
 

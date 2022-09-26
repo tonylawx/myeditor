@@ -9,7 +9,7 @@ import { cloneDeep } from 'lodash-es';
 
 import { useAddField } from '../../utils/useAddField';
 
-import { MTextCom } from '../../../../bwComponentType';
+import { MTextCom } from './bwComponentType';
 import fieldProps from '../../utils/fieldProps';
 
 import { VueEditor } from './components/vue-editor';

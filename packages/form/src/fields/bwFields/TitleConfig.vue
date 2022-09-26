@@ -29,7 +29,7 @@ import { defineProps, reactive, ref,watch} from 'vue';
 import fieldProps from '../../utils/fieldProps';
 import { useAddField } from '../../utils/useAddField';
 import {cloneDeep} from "lodash-es";
-import {MTitleCom} from "../../../../bwComponentType";
+import {MTitleCom} from "./bwComponentType";
 
 const props = defineProps({
   ...fieldProps,
