@@ -18,8 +18,8 @@
 
 export default [
   {
-    type: 'goods-list-selector',
-    text: '商品列表',
-    name: 'goodcom',
+    type: 'rich-text',
+    text: '富文本',
+    name: 'textcom',
   },
 ];

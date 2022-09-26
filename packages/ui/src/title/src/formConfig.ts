@@ -18,8 +18,8 @@
 
 export default [
   {
-    type: 'goods-list-selector',
-    text: '商品列表',
-    name: 'goodcom',
+    type: 'title-config',
+    text: '标题组件',
+    name: 'titlecom',
   },
 ];

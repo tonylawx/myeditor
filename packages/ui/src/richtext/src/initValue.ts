@@ -16,10 +16,4 @@
  * limitations under the License.
  */
 
-export default [
-  {
-    type: 'goods-list-selector',
-    text: '商品列表',
-    name: 'goodcom',
-  },
-];
+export default {};

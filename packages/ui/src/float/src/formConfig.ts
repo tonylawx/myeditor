@@ -18,8 +18,8 @@
 
 export default [
   {
-    type: 'goods-list-selector',
-    text: '商品列表',
-    name: 'goodcom',
+    type: 'hover-window-config',
+    text: '悬浮窗',
+    name: 'floatcom',
   },
 ];

@@ -16,10 +16,9 @@
  * limitations under the License.
  */
 
-export default [
-  {
-    type: 'goods-list-selector',
-    text: '商品列表',
-    name: 'goodcom',
-  },
-];
+import GoodsDisplay from './src/index.vue';
+
+export { default as config } from './src/formConfig';
+export { default as value } from './src/initValue';
+
+export default GoodsDisplay;

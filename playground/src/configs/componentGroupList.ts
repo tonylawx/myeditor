@@ -29,6 +29,36 @@ export default [
         text: '图片组件',
         type: 'imgcom',
       },
+      {
+        icon: Grid,
+        text: '标题组件',
+        type: 'titlecom',
+      },
+      {
+        icon: Grid,
+        text: '视频组件',
+        type: 'videwcom',
+      },
+      {
+        icon: Grid,
+        text: '倒计时组件',
+        type: 'countcom',
+      },
+      {
+        icon: Grid,
+        text: '悬浮窗组件',
+        type: 'floatcom',
+      },
+      {
+        icon: Grid,
+        text: '法宝组件',
+        type: 'treasurecom',
+      },
+      {
+        icon: Grid,
+        text: '富文本',
+        type: 'richtext',
+      },
     ],
   },
 ];

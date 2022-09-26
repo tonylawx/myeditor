@@ -19,7 +19,7 @@
 export default [
   {
     type: 'goods-list-selector',
-    text: '商品列表',
-    name: 'goodcom',
+    text: '法宝',
+    name: 'treasurecom',
   },
 ];

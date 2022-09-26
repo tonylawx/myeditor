@@ -18,8 +18,8 @@
 
 export default [
   {
-    type: 'goods-list-selector',
-    text: '商品列表',
-    name: 'goodcom',
+    type: 'countdown-config',
+    text: '倒计时',
+    name: 'countcom',
   },
 ];
