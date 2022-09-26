@@ -16,30 +16,4 @@
  * limitations under the License.
  */
 
-import Button from './button';
-import Container from './container';
-import GoodsDisplay from './goodsDisplay';
-import Img from './img';
-import Overlay from './overlay';
-import Page from './page';
-import Qrcode from './qrcode';
-import Text from './text';
-import GoodCom from './goodCom'
-import GroupGoodCom from './groupgoodcom'
-import ImgCom from './imgcom'
-
-const ui: Record<string, any> = {
-  page: Page,
-  container: Container,
-  button: Button,
-  text: Text,
-  img: Img,
-  qrcode: Qrcode,
-  overlay: Overlay,
-  goods: GoodsDisplay,
-  goodcom:GoodCom,
-  groupgoodcom:GroupGoodCom,
-  imgcom:ImgCom
-};
-
-export default ui;
+export default {};

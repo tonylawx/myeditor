@@ -96,9 +96,9 @@ const res = reactive(
   Object.assign(
     {},
     {
-      groupNameUnpicked: "",
+      groupNameUnPicked: "",
       groupNamePicked: "",
-      groupBgUnpicked: "",
+      groupBgUnPicked: "",
       groupBgPicked: "",
       groupGoodCom: [],
     },
