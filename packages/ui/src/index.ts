@@ -47,7 +47,7 @@ const ui: Record<string, any> = {
   groupgoodcom:GroupGoodCom,
   imgcom:ImgCom,
   titlecom:TitleCom,
-  videwcom:VideoCom,
+  videocom:VideoCom,
   floatcom:FloatCom,
   countcom:CountCom,
   treasurecom:Treasure,

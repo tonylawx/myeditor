@@ -4,7 +4,7 @@
   <div>
     <el-form>
       <el-form-item label="视频地址">
-        <UploadCustom :showCropper="false"  list-type="text" :limit="1" urlModel v-model:url="res.url" accept="video/mp4" />
+        <UploadCustom :showCropper="false"  list-type="text" :limit="1" urlModel v-model:url="res.url" :sizeLimit="9999" accept="video/mp4" />
         <span>视频建议大小为：1920*1080, 视频比例是16:9</span>
       </el-form-item>
       <el-form-item label="视频图片">

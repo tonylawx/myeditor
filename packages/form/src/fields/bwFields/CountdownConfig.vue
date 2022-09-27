@@ -42,7 +42,10 @@ const res = reactive(Object.assign({},{
 // 对话框flag
 const dialogVisible = ref(false);
 watch(res, (value) => {
-  emit('change',value)
+  const tmp = cloneDeep(value)
+ if(tmp.startTime) tmp.startTime = new Date(tmp.startTime).getTime()
+  if(tmp.endTime)tmp.endTime = new Date(tmp.endTime).getTime()
+  emit('change',tmp)
 })
 </script>
 

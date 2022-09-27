@@ -82,11 +82,10 @@ const openGoodsModal = () => {
 const handleModalConfirm = () => {
   dialogVisible.value = false;
   const item = find(tableData,{id:treasureId.value})
-  console.log(item);
-  goods.value.push(item)
+  goods.value.push(item as never)
 };
 const deleteGood = (good:any, goods: any) => {
-  const index = findIndex(goods, good);
+  const index = findIndex(goods, good)
   goods.splice(index, 1);
 };
 </script>

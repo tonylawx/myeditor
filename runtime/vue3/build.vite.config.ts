@@ -50,7 +50,7 @@ export default defineConfig(({ mode }) => {
 
   if (['page', 'playground', 'page:admin', 'playground:admin'].includes(mode)) {
     const [type, isAdmin] = mode.split(':');
-    const base = isAdmin ? `/static/vue3/runtime/${type}/` : `/tmagic-editor/playground/runtime/vue3/${type}`;
+    const base = isAdmin ? `/static/vue3/runtime/${type}/` : `/runtime/vue3/${type}`;
     const outDir = isAdmin
       ? path.resolve(process.cwd(), `./dist/runtime/${type}`)
       : path.resolve(process.cwd(), `../../playground/public/runtime/vue3/${type}`);
@@ -72,7 +72,7 @@ export default defineConfig(({ mode }) => {
 
       build: {
         emptyOutDir: true,
-        sourcemap: true,
+        // sourcemap: true,
         outDir,
       },
     };
