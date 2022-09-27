@@ -18,7 +18,7 @@
 
 export default [
   {
-    type: 'goods-list-selector',
+    type: 'treasure-selector',
     text: '法宝',
     name: 'options',
   },

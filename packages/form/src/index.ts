@@ -55,6 +55,7 @@ import Time from './fields/Time.vue';
 import { setConfig } from './utils/config';
 import Form from './Form.vue';
 import FormDialog from './FormDialog.vue';
+import TreasureSelector from "./fields/bwFields/TreasureSelector.vue";
 
 import './theme/index.scss';
 import 'vue-cropper/dist/index.css';
@@ -99,6 +100,7 @@ export { default as CountdownConfig } from './fields/bwFields/CountdownConfig.vu
 export { default as HoverWindowConfig } from './fields/bwFields/HoverWindowConfig.vue';
 export { default as GoodsListSelector } from './fields/bwFields/GoodsListSelector.vue';
 export { default as RichText } from './fields/bwFields/RichText.vue';
+export { default as TreasureSelector } from './fields/bwFields/TreasureSelector.vue';
 
 const defaultInstallOpt = {};
 
@@ -145,6 +147,7 @@ const install = (app: App, opt: any) => {
   app.component(HoverWindowConfig.name, HoverWindowConfig);
   app.component(GoodsListSelector.name, GoodsListSelector);
   app.component(RichText.name, RichText);
+  app.component(TreasureSelector.name, TreasureSelector);
 };
 
 export default {
