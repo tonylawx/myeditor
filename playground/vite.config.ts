@@ -32,7 +32,7 @@ export default defineConfig({
     }),
   ],
 
-  base: '/tmagic-editor/playground/',
+  base: '/',
 
   resolve: {
     alias: [
@@ -68,20 +68,20 @@ export default defineConfig({
     port: 8098,
     strictPort: true,
     proxy: {
-      '^/tmagic-editor/playground/runtime': {
+      '^/runtime': {
         target: 'http://127.0.0.1:8078',
         changeOrigin: true,
         prependPath: false,
       },
     },
-    open: '/tmagic-editor/playground/',
+    open: '/',
   },
 
   preview: {
     proxy: {},
   },
 
-  build: {
-    sourcemap: true,
-  },
+  // build: {
+  //   sourcemap: true,
+  // },
 });
