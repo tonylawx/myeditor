@@ -20,6 +20,6 @@ export default [
   {
     type: 'hover-window-config',
     text: '悬浮窗',
-    name: 'floatcom',
+    name: 'options',
   },
 ];

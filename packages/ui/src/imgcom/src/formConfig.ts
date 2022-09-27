@@ -20,6 +20,6 @@ export default [
   {
     type: 'picture-selector',
     text: '图片',
-    name: 'img',
+    name: 'options',
   },
 ];

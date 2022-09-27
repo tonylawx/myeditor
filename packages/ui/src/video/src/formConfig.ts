@@ -20,6 +20,6 @@ export default [
   {
     type: 'video-config',
     text: '标题组件',
-    name: 'videwcom',
+    name: 'options',
   },
 ];

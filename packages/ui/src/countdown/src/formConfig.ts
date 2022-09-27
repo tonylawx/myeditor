@@ -20,6 +20,6 @@ export default [
   {
     type: 'countdown-config',
     text: '倒计时',
-    name: 'countcom',
+    name: 'options',
   },
 ];

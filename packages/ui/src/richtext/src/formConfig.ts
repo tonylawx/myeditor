@@ -20,6 +20,6 @@ export default [
   {
     type: 'rich-text',
     text: '富文本',
-    name: 'textcom',
+    name: 'options',
   },
 ];

@@ -20,6 +20,6 @@ export default [
   {
     type: 'title-config',
     text: '标题组件',
-    name: 'titlecom',
+    name: 'options',
   },
 ];

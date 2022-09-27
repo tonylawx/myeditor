@@ -20,6 +20,6 @@ export default [
   {
     type: 'goods-list-selector',
     text: '法宝',
-    name: 'treasurecom',
+    name: 'options',
   },
 ];

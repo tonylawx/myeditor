@@ -20,6 +20,6 @@ export default [
   {
     type: 'goods-group-selector',
     text: '商品',
-    name: 'groupgoodcom',
+    name: 'options',
   },
 ];
