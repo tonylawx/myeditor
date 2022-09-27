@@ -18,12 +18,8 @@
 
 export default [
   {
-    text: '文本',
-    name: 'text',
-  },
-  {
-    type: 'goods-selector',
-    text: '商品选择',
-    name: 'goods',
+    type: 'treasure-selector',
+    text: '法宝',
+    name: 'options',
   },
 ];

@@ -34,12 +34,11 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType, ref } from 'vue';
+import type { ActFormValue, FormConfigItem } from '@src/typings';
+import { Res } from '@src/util/request';
 import { ElMessage } from 'element-plus';
 
 import { MForm } from '@tmagic/form';
-
-import type { ActFormValue, FormConfigItem } from '@src/typings';
-import { Res } from '@src/util/request';
 
 export default defineComponent({
   name: 'm-form-dialog',
@@ -138,7 +137,7 @@ export default defineComponent({
 .m-dialog .m-dialog-body {
   padding: 0 20px;
 }
-.el-table .m-form-item .el-form-item {
-  margin-bottom: 0;
-}
+/*.el-table .m-form-item .el-form-item {*/
+/*  margin-bottom: 0;*/
+/*}*/
 </style>

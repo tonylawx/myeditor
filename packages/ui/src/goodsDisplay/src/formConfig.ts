@@ -18,12 +18,43 @@
 
 export default [
   {
-    text: '文本',
-    name: 'text',
+    type: 'rich-text',
+    text: '文本编辑器',
+    name: 'rich',
   },
   {
-    type: 'goods-selector',
-    text: '商品选择',
+    type: 'goods-list-selector',
+    text: '商品',
     name: 'goods',
+  },
+  {
+    type: 'hover-window-config',
+    text: '悬浮窗',
+    name: 'window',
+  },
+  {
+    type: 'countdown-config',
+    text: '倒计时',
+    name: 'countdown',
+  },
+  {
+    type: 'video-config',
+    text: '视频',
+    name: 'video',
+  },
+  {
+    type: 'title-config',
+    text: '标题',
+    name: 'title',
+  },
+  {
+    type: 'picture-selector',
+    text: '图片选择',
+    name: 'pictures',
+  },
+  {
+    type: 'goods-group-selector',
+    text: '商品分组选择',
+    name: 'goodsGroup',
   },
 ];

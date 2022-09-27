@@ -18,12 +18,8 @@
 
 export default [
   {
-    text: '文本',
-    name: 'text',
-  },
-  {
-    type: 'goods-selector',
-    text: '商品选择',
-    name: 'goods',
+    type: 'hover-window-config',
+    text: '悬浮窗',
+    name: 'options',
   },
 ];

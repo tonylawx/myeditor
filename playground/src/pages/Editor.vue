@@ -15,7 +15,7 @@
       :stage-rect="stageRect"
     >
       <template #workspace-content>
-        <DeviceGroup v-model="stageRect"></DeviceGroup>
+<!--        <DeviceGroup v-model="stageRect"></DeviceGroup>-->
       </template>
     </m-editor>
 
@@ -44,7 +44,7 @@ import { NodeType } from '@tmagic/schema';
 import StageCore from '@tmagic/stage';
 import { asyncLoadJs } from '@tmagic/utils';
 
-import DeviceGroup from '../components/DeviceGroup.vue';
+// import DeviceGroup from '../components/DeviceGroup.vue';
 import componentGroupList from '../configs/componentGroupList';
 import dsl from '../configs/dsl';
 import { login } from '../services/login/index';
@@ -90,16 +90,16 @@ const menu: MenuBarData = {
   ],
   center: ['delete', 'undo', 'redo', 'guides', 'rule', 'zoom'],
   right: [
-    {
-      type: 'button',
-      text: 'Form Playground',
-      handler: () => router.push('form'),
-    },
-    {
-      type: 'button',
-      text: 'Table Playground',
-      handler: () => router.push('table'),
-    },
+    // {
+    //   type: 'button',
+    //   text: 'Form Playground',
+    //   handler: () => router.push('form'),
+    // },
+    // {
+    //   type: 'button',
+    //   text: 'Table Playground',
+    //   handler: () => router.push('table'),
+    // },
     '/',
     {
       type: 'button',

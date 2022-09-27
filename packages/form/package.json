@@ -34,12 +34,21 @@
     "url": "https://github.com/Tencent/tmagic-editor.git"
   },
   "dependencies": {
+    "@ant-design/icons-vue": "^6.1.0",
     "@element-plus/icons-vue": "^2.0.9",
     "@tmagic/utils": "1.1.4",
+    "@wangeditor/editor": "^5.1.18",
+    "@wangeditor/editor-for-vue": "^5.1.12",
+    "ali-oss": "^6.17.1",
+    "ant-design-vue": "^3.2.12",
     "element-plus": "^2.2.6",
     "lodash-es": "^4.17.21",
+    "mime-types": "^2.1.35",
+    "short-uuid": "^4.2.0",
     "sortablejs": "^1.14.0",
-    "vue": "^3.2.37"
+    "vue": "^3.2.37",
+    "vue-cropper": "^1.0.5",
+    "vuedraggable": "^4.1.0"
   },
   "peerDependencies": {
     "element-plus": "^2.2.6",
@@ -47,7 +56,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.0",
+    "@types/ali-oss": "^6.16.4",
     "@types/lodash-es": "^4.17.4",
+    "@types/mime-types": "^2.1.1",
     "@types/node": "^15.12.4",
     "@types/sortablejs": "^1.10.7",
     "@vitejs/plugin-vue": "^3.1.0",

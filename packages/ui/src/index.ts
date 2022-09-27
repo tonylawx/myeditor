@@ -18,11 +18,21 @@
 
 import Button from './button';
 import Container from './container';
+import GoodsDisplay from './goodsDisplay';
 import Img from './img';
 import Overlay from './overlay';
 import Page from './page';
 import Qrcode from './qrcode';
 import Text from './text';
+import GoodCom from './goodCom'
+import GroupGoodCom from './groupgoodcom'
+import ImgCom from './imgcom'
+import TitleCom from './title'
+import VideoCom from './video'
+import FloatCom from  './float'
+import CountCom from './countdown'
+import Treasure from './treasure'
+import RichText from './richtext'
 
 const ui: Record<string, any> = {
   page: Page,
@@ -32,6 +42,16 @@ const ui: Record<string, any> = {
   img: Img,
   qrcode: Qrcode,
   overlay: Overlay,
+  goods: GoodsDisplay,
+  goodcom:GoodCom,
+  groupgoodcom:GroupGoodCom,
+  imgcom:ImgCom,
+  titlecom:TitleCom,
+  videwcom:VideoCom,
+  floatcom:FloatCom,
+  countcom:CountCom,
+  treasurecom:Treasure,
+  richtext:RichText
 };
 
 export default ui;
