@@ -64,17 +64,12 @@ const urlName = ref('');
 const handleOpen = () => {
   modalVisible.value = true;
 };
-const handleModalConfirm = ()=>{
-  modalVisible.value = false
-  if(props.linkOption.type==='H5'){
-    urlName.value = `自定义链接-h5-${props.linkOption.url}`
+const handleModalConfirm = () => {
+  modalVisible.value = false;
+  if (props.linkOption.type === 'H5') {
+    urlName.value = `自定义链接-h5-${props.linkOption.url}`;
   }
-}
-</script>
-<script lang="ts">
-export default {
-  name:'LinkSelector'
-}
+};
 </script>
 
 <style scoped></style>

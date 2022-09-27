@@ -33,6 +33,7 @@ import FloatCom from  './float'
 import CountCom from './countdown'
 import Treasure from './treasure'
 import RichText from './richtext'
+import Navcom from './navcom'
 
 const ui: Record<string, any> = {
   page: Page,
@@ -51,7 +52,8 @@ const ui: Record<string, any> = {
   floatcom:FloatCom,
   countcom:CountCom,
   treasurecom:Treasure,
-  richtext:RichText
+  textcom:RichText,
+  navcom:Navcom
 };
 
 export default ui;

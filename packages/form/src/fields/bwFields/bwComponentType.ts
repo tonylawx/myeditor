@@ -1,6 +1,16 @@
-// @ts-ignore
-import { MComponent } from '@tmagic/ui/src/types'
+import { MComponent } from '../../../../ui/src/types';
 
+export type LinkOptions =
+  | {
+    type: 'H5' // 1：商城小程序页面 2：商城小程序商品详情页 3：商城小程序商品分组 4：会场页面 5：视频号直播 6：自定义链接
+    url: string
+  }
+  | {
+    type: 'MiniProgram'
+    appId: string
+    url: string
+  }
+  | { type: 'Video' };
 export interface IImgItem {
   url: string
   height: number
@@ -15,12 +25,13 @@ type ImgComType =
   | 'columnFour'
   | 'gridFour'
   | 'gridFive'
-  | 'gridTian'
+  | 'gridTian';
+
 export interface MImgComItem {
+  // eslint-disable-next-line max-len
   comType: ImgComType // swiper：轮播 single：单图 columnTwo：两列 columnThree：三列 columnFour：四列 GridFour：四宫格 GridFive：五宫格 GridTian：田字格
-  swiperOptions: {
-    auto: boolean,
-    duration:string
+  swiperOptions?: {
+    auto: boolean
   }
 }
 export interface MGoodComItem {
@@ -70,7 +81,7 @@ export interface MTitleCom extends MComponent {
 export interface MTextCom extends MComponent {
   text: string
 }
-/* videwcom(视频组件) */
+/* videocom(视频组件) */
 export interface MVideoCom extends MComponent {
   url: string
   bgUrl: string
@@ -81,11 +92,7 @@ export interface MCountCom extends MComponent {
   startTime: string
   endTime: string
 }
-export type LinkOptions ={
-    type: 'MiniProgram'|'H5'|'Video'
-  appId?: string;
-    url: string
-  }
+
 /* floatcom(悬浮窗组件) */
 export interface MFloatCom extends MComponent {
   bgUrl: string
@@ -96,4 +103,13 @@ export interface MFloatCom extends MComponent {
 export interface MTreasureCom extends MComponent {
   comType: string // list：列表 slide：侧滑
   compId: string // id
+}
+/* navcom(导航栏组件) */
+export interface MNavCom extends MComponent {
+  navList: {
+    isDefault: boolean
+    pickedIcon: string
+    unPickedIcon: string
+    link?: LinkOptions
+  }[]
 }

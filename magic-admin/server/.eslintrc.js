@@ -14,7 +14,7 @@ module.exports = {
   extends: [
     'eslint-config-tencent',
     'eslint-config-tencent/ts',
-    'eslint-config-tencent/prettier',
+    // 'eslint-config-tencent/prettier',
   ],
   plugins: [
     '@typescript-eslint',

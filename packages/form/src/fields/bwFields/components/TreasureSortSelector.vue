@@ -40,58 +40,48 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { defineProps } from "vue";
-// 对话框flag
-import { ref } from "vue";
-import { findIndex } from "lodash-es";
-import draggable from "vuedraggable";
-import { ElTable } from "element-plus";
-import {find} from "lodash-es";
+import { defineProps, ref } from 'vue';
+import draggable from 'vuedraggable';
+import { find, findIndex } from 'lodash-es';
 
 const goods = ref([]);
-const treasureId = ref('')
+const treasureId = ref('');
 const tableData = [
   {
-    name: "法宝1",
-    price: "100",
-    merchant: "商家1",
-    type: "分类1",
-    id: "1",
+    name: '法宝1',
+    price: '100',
+    merchant: '商家1',
+    type: '分类1',
+    id: '1',
   },
   {
-    name: "法宝2",
-    price: "50",
-    merchant: "商家2",
-    type: "分类2",
-    id: "2",
+    name: '法宝2',
+    price: '50',
+    merchant: '商家2',
+    type: '分类2',
+    id: '2',
   },
 ];
 const dialogVisible = ref(false);
-const multipleTableRef = ref<InstanceType<typeof ElTable>>();
 defineProps({
   hint: {
     type: String,
-    default: () => "",
+    default: () => '',
   },
 });
 
 const openGoodsModal = () => {
   dialogVisible.value = true;
-  treasureId.value = ''
+  treasureId.value = '';
 };
 const handleModalConfirm = () => {
   dialogVisible.value = false;
-  const item = find(tableData,{id:treasureId.value})
-  goods.value.push(item as never)
+  const item = find(tableData, { id: treasureId.value });
+  goods.value.push(item as never);
 };
-const deleteGood = (good:any, goods: any) => {
-  const index = findIndex(goods, good)
+const deleteGood = (good: any, goods: any) => {
+  const index = findIndex(goods, good);
   goods.splice(index, 1);
-};
-</script>
-<script lang="ts">
-export default {
-  name: "TreasureSortSelector",
 };
 </script>
 

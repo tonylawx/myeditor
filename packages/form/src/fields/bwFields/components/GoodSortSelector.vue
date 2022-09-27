@@ -57,62 +57,61 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { defineProps } from "vue";
+import { defineProps, ref } from 'vue';
+import draggable from 'vuedraggable';
+import { ElTable } from 'element-plus';
 // 对话框flag
-import { ref } from "vue";
-import { findIndex } from "lodash-es";
-import draggable from "vuedraggable";
-import { ElTable } from "element-plus";
+import { findIndex } from 'lodash-es';
 const goods = ref([]);
 const tableData = [
   {
-    name: "测试商品1",
-    price: "100",
-    merchant: "商家1",
-    type: "分类1",
-    id: "1",
+    name: '测试商品1',
+    price: '100',
+    merchant: '商家1',
+    type: '分类1',
+    id: '1',
   },
   {
-    name: "测试商品2",
-    price: "101",
-    merchant: "商家2",
-    type: "分类2",
-    id: "2",
+    name: '测试商品2',
+    price: '101',
+    merchant: '商家2',
+    type: '分类2',
+    id: '2',
   },
   {
-    name: "测试商品3",
-    price: "101",
-    merchant: "商家2",
-    type: "分类2",
-    id: "3",
+    name: '测试商品3',
+    price: '101',
+    merchant: '商家2',
+    type: '分类2',
+    id: '3',
   },
   {
-    name: "测试商品4",
-    price: "101",
-    merchant: "商家2",
-    type: "分类2",
-    id: "4",
+    name: '测试商品4',
+    price: '101',
+    merchant: '商家2',
+    type: '分类2',
+    id: '4',
   },
   {
-    name: "测试商品5",
-    price: "101",
-    merchant: "商家2",
-    type: "分类2",
-    id: "5",
+    name: '测试商品5',
+    price: '101',
+    merchant: '商家2',
+    type: '分类2',
+    id: '5',
   },
   {
-    name: "测试商品6",
-    price: "101",
-    merchant: "商家2",
-    type: "分类2",
-    id: "6",
+    name: '测试商品6',
+    price: '101',
+    merchant: '商家2',
+    type: '分类2',
+    id: '6',
   },
   {
-    name: "测试商品7",
-    price: "101",
-    merchant: "商家2",
-    type: "分类2",
-    id: "7",
+    name: '测试商品7',
+    price: '101',
+    merchant: '商家2',
+    type: '分类2',
+    id: '7',
   },
 ];
 const dialogVisible = ref(false);
@@ -120,7 +119,7 @@ const multipleTableRef = ref<InstanceType<typeof ElTable>>();
 defineProps({
   hint: {
     type: String,
-    default: () => "",
+    default: () => '',
   },
 });
 
@@ -137,17 +136,11 @@ const handleModalConfirm = () => {
   dialogVisible.value = false;
   goods.value = multipleTableRef.value!.getSelectionRows();
 };
-const deleteGood = (good:any, goods: any) => {
+const deleteGood = (good: any, goods: any) => {
   const index = findIndex(goods, good);
   goods.splice(index, 1);
 };
 </script>
-<script lang="ts">
-export default {
-  name: "GoodSortSelector",
-};
-</script>
-
 <style scoped lang="scss">
 .good-sort-selector {
   &__draggable-goods {
