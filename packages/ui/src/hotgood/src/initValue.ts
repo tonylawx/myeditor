@@ -16,7 +16,4 @@
  * limitations under the License.
  */
 
-export default {
-  type: 'app',
-  items: [],
-}
+export default {};

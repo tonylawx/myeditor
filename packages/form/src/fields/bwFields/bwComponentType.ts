@@ -62,6 +62,7 @@ export interface MGroupGoodCom extends MComponent {
 
 /* hotgoodcom(榜单商品组件) */
 export interface MHotGoodCom extends MComponent {
+  auto:boolean
   goodComItem: Omit<MGoodComItem, 'groupName'>
 }
 

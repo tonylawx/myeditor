@@ -62,7 +62,7 @@ const runtimeUrl = `${VITE_RUNTIME_PATH}/playground/index.html`;
 const editor = ref<InstanceType<typeof TMagicEditor>>();
 const previewVisible = ref(false);
 const value = ref(dsl);
-const defaultSelected = ref(dsl.items[0].id);
+const defaultSelected = ref(dsl.items[0]?.id);
 const propsValues = ref<Record<string, any>>({});
 const propsConfigs = ref<Record<string, any>>({});
 const eventMethodList = ref<Record<string, any>>({});
@@ -76,9 +76,12 @@ const previewUrl = computed(() => 'https://testh5.betterwood.com/#/magic');
 const params = new URLSearchParams(window.location.search);
 const status = params.get('status'); // copy edit
 const pageId = params.get('pageId');
-// if (pageId) {
-//    getDSL(pageId);
-// }
+if (pageId) {
+  getDSL(pageId).then((res) => {
+    const { data } = res;
+    value.value = data;
+  });
+}
 const store = useMainStore();
 store.update_token(params.get('token') || undefined);
 
@@ -213,9 +216,7 @@ editorService.usePlugin({
       let isNavExist = false;
       const firstSurface = value.value.items[0].items;
       if (firstSurface.length > 0) {
-        isNavExist = !!value.value.items[0].items.filter((item:any) => {
-          return item.type === 'navcom';
-        }).length;
+        isNavExist = !!value.value.items[0].items.filter((item: any) => item.type === 'navcom').length;
       }
       if (isNavExist) {
         ElMessage.warning('只能添加一个导航栏');

@@ -16,7 +16,9 @@
  * limitations under the License.
  */
 
-export default {
-  type: 'app',
-  items: [],
-}
+import GoodsDisplay from './src/index.vue';
+
+export { default as config } from './src/formConfig';
+export { default as value } from './src/initValue';
+
+export default GoodsDisplay;

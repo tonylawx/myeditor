@@ -57,6 +57,7 @@ import Form from './Form.vue';
 import FormDialog from './FormDialog.vue';
 import TreasureSelector from "./fields/bwFields/TreasureSelector.vue";
 import NavConfig from "./fields/bwFields/NavConfig.vue";
+import GoodsBillboardSelector from "./fields/bwFields/GoodsBillboardSelector.vue";
 
 import './theme/index.scss';
 import 'vue-cropper/dist/index.css';
@@ -103,6 +104,7 @@ export { default as GoodsListSelector } from './fields/bwFields/GoodsListSelecto
 export { default as RichText } from './fields/bwFields/RichText.vue';
 export { default as TreasureSelector } from './fields/bwFields/TreasureSelector.vue';
 export { default as NavConfig } from './fields/bwFields/NavConfig.vue';
+export { default as GoodsBillboardSelector } from './fields/bwFields/GoodsBillboardSelector.vue';
 
 const defaultInstallOpt = {};
 
@@ -151,6 +153,7 @@ const install = (app: App, opt: any) => {
   app.component(RichText.name, RichText);
   app.component(TreasureSelector.name, TreasureSelector);
   app.component(NavConfig.name, NavConfig);
+  app.component(GoodsBillboardSelector.name, GoodsBillboardSelector);
 };
 
 export default {

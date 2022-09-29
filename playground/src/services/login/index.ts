@@ -1,4 +1,5 @@
 import { request } from '../../utils/request';
+import axios from "axios";
 /**
  * @description 登录
  * @param {LoginParams} data
@@ -66,7 +67,7 @@ export function uploadOssJSON(params: IJSON) {
 }
 
 export function getDSL(pageId: string) {
-  return request({
+  return axios({
     url: `https://test.img.betterwood.com/sys/hotelArea/json/${pageId}.json?stamp=${new Date().getTime()}`,
     method: 'GET',
   });

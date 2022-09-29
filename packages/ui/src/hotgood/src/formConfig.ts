@@ -16,7 +16,10 @@
  * limitations under the License.
  */
 
-export default {
-  type: 'app',
-  items: [],
-}
+export default [
+  {
+    type: 'goods-billboard-selector',
+    text: '商品',
+    name: 'options',
+  },
+];

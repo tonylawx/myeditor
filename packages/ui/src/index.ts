@@ -18,22 +18,23 @@
 
 import Button from './button';
 import Container from './container';
+import CountCom from './countdown';
+import FloatCom from './float';
+import GoodCom from './goodCom';
 import GoodsDisplay from './goodsDisplay';
+import GroupGoodCom from './groupgoodcom';
+import Hotgood from './hotgood';
 import Img from './img';
+import ImgCom from './imgcom';
+import Navcom from './navcom';
 import Overlay from './overlay';
 import Page from './page';
 import Qrcode from './qrcode';
+import RichText from './richtext';
 import Text from './text';
-import GoodCom from './goodCom'
-import GroupGoodCom from './groupgoodcom'
-import ImgCom from './imgcom'
-import TitleCom from './title'
-import VideoCom from './video'
-import FloatCom from  './float'
-import CountCom from './countdown'
-import Treasure from './treasure'
-import RichText from './richtext'
-import Navcom from './navcom'
+import TitleCom from './title';
+import Treasure from './treasure';
+import VideoCom from './video';
 
 const ui: Record<string, any> = {
   page: Page,
@@ -44,16 +45,17 @@ const ui: Record<string, any> = {
   qrcode: Qrcode,
   overlay: Overlay,
   goods: GoodsDisplay,
-  goodcom:GoodCom,
-  groupgoodcom:GroupGoodCom,
-  imgcom:ImgCom,
-  titlecom:TitleCom,
-  videocom:VideoCom,
-  floatcom:FloatCom,
-  countcom:CountCom,
-  treasurecom:Treasure,
-  textcom:RichText,
-  navcom:Navcom
+  goodcom: GoodCom,
+  groupgoodcom: GroupGoodCom,
+  imgcom: ImgCom,
+  titlecom: TitleCom,
+  videocom: VideoCom,
+  floatcom: FloatCom,
+  countcom: CountCom,
+  treasurecom: Treasure,
+  textcom: RichText,
+  navcom: Navcom,
+  hotgood: Hotgood,
 };
 
 export default ui;

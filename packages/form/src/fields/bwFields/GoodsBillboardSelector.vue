@@ -31,9 +31,9 @@
   <div class="goods-selector">
     <el-form label-position="left" :label-width="120">
       <el-form-item label="商品选择">
-        <el-radio-group >
-          <el-radio label="column"> 人工 </el-radio>
-          <el-radio label="list"> 系统 </el-radio>
+        <el-radio-group v-model="res.auto" >
+          <el-radio :label="false"> 人工 </el-radio>
+          <el-radio :label="true"> 系统 </el-radio>
         </el-radio-group>
       </el-form-item>
     </el-form>
@@ -63,6 +63,7 @@ const res = reactive(
   Object.assign(
     {},
     {
+      auto:true,
       compId: '', // 获取商品组件数据的ID
       comType:'list'
     },
