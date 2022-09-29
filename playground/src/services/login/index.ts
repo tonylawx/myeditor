@@ -42,3 +42,25 @@ export async function getRouter(backMenu = true) {
     method: 'GET',
   });
 }
+export function gePageId(params: {
+  'pageName': string
+  'pageStatus': string
+  'pageUrl'?: string
+}) {
+  return request({
+    url: '/bdw-component-decoration-admin/activity/page/add',
+    method: 'POST',
+    data: params,
+  });
+}
+export interface IJSON {
+  jsonContent: string
+  zoneId: string
+}
+export function uploadOssJSON(params: IJSON) {
+  return request({
+    url: '/base-manage/file/upload/json',
+    method: 'POST',
+    data: params,
+  });
+}

@@ -1,6 +1,6 @@
-import Oss from 'ali-oss'
+import Oss from 'ali-oss';
 
-export type ENV = 'test' | 'dev' | 'uat' | 'prod'
+export type ENV = 'test' | 'dev' | 'uat' | 'prod';
 export interface OssConfig {
   env?: ENV
   region?: string
@@ -13,11 +13,11 @@ export const envMap = {
   dev: 'delonix-test',
   uat: 'delonix-uat',
   prod: 'delonix-prod',
-}
+};
 
 export const getOssConfig = (config: OssConfig) => {
-  console.log('config   ------------>', config)
-  const { env, ...others } = config
+  console.log('config   ------------>', config);
+  const { env, ...others } = config;
   return new Oss({
     secure: true,
     region: 'oss-cn-shenzhen',
@@ -26,33 +26,33 @@ export const getOssConfig = (config: OssConfig) => {
     ...others,
     bucket: env ? envMap[env] : 'delonix-test',
     timeout: 600000,
-  })
-}
-export const uploadToOss = (config: OssConfig, file:any, url: string) => {
-  console.log('uploadToOss 222222 -------->', config)
+  });
+};
+export const uploadToOss = (config: OssConfig, file: any, url: string) => {
+  console.log('uploadToOss 222222 -------->', config);
   return new Promise((resolve, reject) => {
     getOssConfig(config)
       .put(url, file)
-      .then((res:any) => {
-        resolve(res)
+      .then((res: any) => {
+        resolve(res);
       })
-      .catch((error:any) => {
-        reject(error)
-      })
-  })
-}
+      .catch((error: any) => {
+        reject(error);
+      });
+  });
+};
 
 export const delFromOss = (config: OssConfig, url: string) => {
-  console.log(config, 'config+++')
-  console.log(url, 'url+++')
+  console.log(config, 'config+++');
+  console.log(url, 'url+++');
   return new Promise((resolve, reject) => {
     getOssConfig(config)
       .delete(url)
       .then(() => {
-        resolve(true)
+        resolve(true);
       })
-      .catch((error:any) => {
-        reject(error)
-      })
-  })
-}
+      .catch((error: any) => {
+        reject(error);
+      });
+  });
+};

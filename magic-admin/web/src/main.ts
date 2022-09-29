@@ -17,15 +17,14 @@
  */
 
 import { createApp } from 'vue';
-import ElementPlus from 'element-plus';
-
-import MagicEditor, { editorService } from '@tmagic/editor';
-import MagicForm from '@tmagic/form';
-
 import App from '@src/app.vue';
 import editorPlugin from '@src/plugins/editor';
 import router from '@src/router';
 import installComponents from '@src/use/use-comp';
+import ElementPlus from 'element-plus';
+
+import MagicEditor, { editorService } from '@tmagic/editor';
+import MagicForm from '@tmagic/form';
 
 import 'element-plus/dist/index.css';
 import '@tmagic/editor/dist/style.css';

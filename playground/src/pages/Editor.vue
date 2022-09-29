@@ -15,7 +15,7 @@
       :stage-rect="stageRect"
     >
       <template #workspace-content>
-<!--        <DeviceGroup v-model="stageRect"></DeviceGroup>-->
+        <!--        <DeviceGroup v-model="stageRect"></DeviceGroup>-->
       </template>
     </m-editor>
 
@@ -26,7 +26,12 @@
       title="预览"
       :width="stageRect && stageRect.width"
     >
-      <iframe v-if="previewVisible" width="100%" :height="stageRect && stageRect.height" :src="previewUrl"></iframe>
+      <iframe
+        v-if="previewVisible"
+        width="100%"
+        :height="stageRect && stageRect.height"
+        :src="previewUrl"
+      ></iframe>
     </el-dialog>
   </div>
 </template>
@@ -47,13 +52,13 @@ import { asyncLoadJs } from '@tmagic/utils';
 // import DeviceGroup from '../components/DeviceGroup.vue';
 import componentGroupList from '../configs/componentGroupList';
 import dsl from '../configs/dsl';
-import { login } from '../services/login/index';
+import { gePageId, login, uploadOssJSON } from '../services/login/index';
 import { useMainStore } from '../store/main';
 
 const { VITE_RUNTIME_PATH, VITE_ENTRY_PATH } = import.meta.env;
 
 const runtimeUrl = `${VITE_RUNTIME_PATH}/playground/index.html`;
-const router = useRouter();
+// const router = useRouter();
 const editor = ref<InstanceType<typeof TMagicEditor>>();
 const previewVisible = ref(false);
 const value = ref(dsl);
@@ -66,20 +71,22 @@ const stageRect = ref({
   height: 817,
 });
 
-const previewUrl = computed(
-  () => `${VITE_RUNTIME_PATH}/page/index.html?localPreview=1&page=${editor.value?.editorService.get('page').id}`,
-);
+// const previewUrl = computed(() => `${VITE_RUNTIME_PATH}/page/index.html?localPreview=1&page=${editor.value?.editorService.get('page').id}`);
+const previewUrl = computed(() => 'https://testh5.betterwood.com/#/magic');
+const params = new URLSearchParams(window.location.search);
+const status = params.get('status');
+const activityId  = params.get('activityId');
 
 const store = useMainStore();
-const loginin = async () => {
-  const loginRes = await login({
-    username: 'admin',
-    password: '123456',
-  });
-  store.update_token(`Bearer ${loginRes.access_token}`);
-  ElMessage.success('登陆成功！');
-};
-loginin();
+// const loginin = async () => {
+//   const loginRes = await login({
+//     username: 'admin',
+//     password: '123456',
+//   });
+store.update_token(params.get('token') || undefined);
+//   ElMessage.success('登陆成功！');
+// };
+// loginin();
 
 const menu: MenuBarData = {
   left: [
@@ -128,7 +135,7 @@ const menu: MenuBarData = {
       icon: Coin,
       handler: () => {
         save();
-        ElMessage.success('保存成功');
+        // ElMessage.success('保存成功');
       },
     },
     '/',
@@ -136,7 +143,7 @@ const menu: MenuBarData = {
       type: 'button',
       icon: Document,
       tooltip: '源码',
-      handler: (service) => service?.uiService.set('showSrc', !service?.uiService.get('showSrc')),
+      handler: service => service?.uiService.set('showSrc', !service?.uiService.get('showSrc')),
     },
   ],
 };
@@ -161,14 +168,24 @@ const moveableOptions = (core?: StageCore): MoveableOptions => {
 };
 
 const save = () => {
+  const DSL =   serialize(toRaw(value.value), {
+    space: 2,
+    unsafe: true,
+  }).replace(/"(\w+)":\s/g, '$1: ');
   localStorage.setItem(
     'magicDSL',
-    serialize(toRaw(value.value), {
-      space: 2,
-      unsafe: true,
-    }).replace(/"(\w+)":\s/g, '$1: '),
+    DSL,
   );
   editor.value?.editorService.resetModifiedNodeId();
+  gePageId({
+    pageName: '测试名称1',
+    pageStatus: '0',
+    pageUrl: 'xxxx',
+  }).then((res) => {
+    uploadOssJSON({ zoneId: res, jsonContent: DSL }).then((res) => {
+      ElMessage.success('新建页面成功');
+    });
+  });
 };
 
 asyncLoadJs(`${VITE_ENTRY_PATH}/config/index.umd.js`).then(() => {
@@ -181,7 +198,7 @@ asyncLoadJs(`${VITE_ENTRY_PATH}/event/index.umd.js`).then(() => {
   eventMethodList.value = (globalThis as any).magicPresetEvents;
 });
 
-save();
+// save();
 
 editorService.usePlugin({
   beforeDoAdd: (config: MNode, parent?: MContainer | null) => {

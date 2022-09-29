@@ -120,8 +120,8 @@ const requestFuc = function <T>(options: ReqOptions<T>) {
       },
       options.json === true
         ? {
-            'Content-Type': 'application/json',
-          }
+          'Content-Type': 'application/json',
+        }
         : {},
       options.headers || {},
     ),
@@ -170,15 +170,15 @@ export default {
 
   post<T>(options: ReqOptions<T>): Promise<Res & any> {
     options.method = 'POST';
-    return requestFuc(options).then((response) => response?.data);
+    return requestFuc(options).then(response => response?.data);
   },
 
   get<T>(options: ReqOptions<T>): Promise<Res> {
     options.method = 'GET';
-    return requestFuc(options).then((response) => response?.data);
+    return requestFuc(options).then(response => response?.data);
   },
 
   jsonp<T>(options: ReqOptions<T>): Promise<Res> {
-    return axiosJsonp(options).then((res) => res.data);
+    return axiosJsonp(options).then(res => res.data);
   },
 };
