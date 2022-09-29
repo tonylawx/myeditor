@@ -56,6 +56,7 @@ import { setConfig } from './utils/config';
 import Form from './Form.vue';
 import FormDialog from './FormDialog.vue';
 import TreasureSelector from "./fields/bwFields/TreasureSelector.vue";
+import NavConfig from "./fields/bwFields/NavConfig.vue";
 
 import './theme/index.scss';
 import 'vue-cropper/dist/index.css';
@@ -101,6 +102,7 @@ export { default as HoverWindowConfig } from './fields/bwFields/HoverWindowConfi
 export { default as GoodsListSelector } from './fields/bwFields/GoodsListSelector.vue';
 export { default as RichText } from './fields/bwFields/RichText.vue';
 export { default as TreasureSelector } from './fields/bwFields/TreasureSelector.vue';
+export { default as NavConfig } from './fields/bwFields/NavConfig.vue';
 
 const defaultInstallOpt = {};
 
@@ -148,6 +150,7 @@ const install = (app: App, opt: any) => {
   app.component(GoodsListSelector.name, GoodsListSelector);
   app.component(RichText.name, RichText);
   app.component(TreasureSelector.name, TreasureSelector);
+  app.component(NavConfig.name, NavConfig);
 };
 
 export default {

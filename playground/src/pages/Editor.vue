@@ -14,9 +14,9 @@
       :auto-scroll-into-view="true"
       :stage-rect="stageRect"
     >
-<!--      <template #workspace-content>-->
-<!--        &lt;!&ndash;        <DeviceGroup v-model="stageRect"></DeviceGroup>&ndash;&gt;-->
-<!--      </template>-->
+      <!--      <template #workspace-content>-->
+      <!--        &lt;!&ndash;        <DeviceGroup v-model="stageRect"></DeviceGroup>&ndash;&gt;-->
+      <!--      </template>-->
     </m-editor>
 
     <el-dialog
@@ -52,7 +52,7 @@ import { asyncLoadJs } from '@tmagic/utils';
 // import DeviceGroup from '../components/DeviceGroup.vue';
 import componentGroupList from '../configs/componentGroupList';
 import dsl from '../configs/dsl';
-import { gePageId, uploadOssJSON } from '../services/login';
+import { gePageId, getDSL, uploadOssJSON } from '../services/login';
 import { useMainStore } from '../store/main';
 
 const { VITE_RUNTIME_PATH, VITE_ENTRY_PATH } = import.meta.env;
@@ -76,9 +76,8 @@ const previewUrl = computed(() => 'https://testh5.betterwood.com/#/magic');
 const params = new URLSearchParams(window.location.search);
 const status = params.get('status'); // copy edit
 const pageId = params.get('pageId');
-// const pageJSON = `https://test.img.betterwood.com/sys/hotelArea/json/${pageId}.json`;
-// if(pageId){
-//   value.value =
+// if (pageId) {
+//    getDSL(pageId);
 // }
 const store = useMainStore();
 store.update_token(params.get('token') || undefined);
@@ -210,7 +209,19 @@ editorService.usePlugin({
 
       return [config, editorService.get('page')];
     }
-
+    if (config.type === 'navcom') {
+      let isNavExist = false;
+      const firstSurface = value.value.items[0].items;
+      if (firstSurface.length > 0) {
+        isNavExist = !!value.value.items[0].items.filter((item:any) => {
+          return item.type === 'navcom';
+        }).length;
+      }
+      if (isNavExist) {
+        ElMessage.warning('只能添加一个导航栏');
+        throw new Error('只能添加一个导航栏');
+      }
+    }
     return [config, parent];
   },
 });

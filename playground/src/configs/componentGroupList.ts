@@ -59,6 +59,11 @@ export default [
         text: '富文本',
         type: 'richtext',
       },
+      {
+        icon: Grid,
+        text: '导航栏',
+        type: 'navcom',
+      },
     ],
   },
 ];

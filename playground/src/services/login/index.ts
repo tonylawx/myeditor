@@ -64,3 +64,10 @@ export function uploadOssJSON(params: IJSON) {
     data: params,
   });
 }
+
+export function getDSL(pageId: string) {
+  return request({
+    url: `https://test.img.betterwood.com/sys/hotelArea/json/${pageId}.json?stamp=${new Date().getTime()}`,
+    method: 'GET',
+  });
+}
