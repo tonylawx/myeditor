@@ -20,6 +20,6 @@ export default [
   {
     type: 'treasure-selector',
     text: '法宝',
-    name: 'options',
+    name: 'options'
   },
 ];

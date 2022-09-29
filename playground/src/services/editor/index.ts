@@ -1,0 +1,65 @@
+import axios from 'axios';
+
+import { request } from '../../utils/request';
+
+const menuPrefix = '/system';
+export async function getRouter(backMenu = true) {
+  return request({
+    url: backMenu ? `${menuPrefix}/menu/getRouters` : `${menuPrefix}/menu/mp/getRouters`,
+    method: 'GET',
+  });
+}
+export function gePageId(params: { pageName: string; pageStatus: string; pageUrl?: string }) {
+  return request({
+    url: '/bdw-component-decoration-admin/activity/page/add',
+    method: 'POST',
+    data: params,
+  });
+}
+export interface IJSON {
+  jsonContent: string;
+  zoneId: string;
+}
+export function uploadOssJSON(params: IJSON) {
+  return request({
+    url: '/base-manage/file/upload/json',
+    method: 'POST',
+    data: params,
+  });
+}
+
+export function getDSL(pageId: string) {
+  return axios({
+    url: `https://test.img.betterwood.com/sys/hotelArea/json/${pageId}.json?stamp=${new Date().getTime()}`,
+    method: 'GET',
+  });
+}
+export interface ITreasureItem {
+  brandName: string;
+  magicName: string;
+  stockNoSend?: any;
+  stockType: number;
+  type?: any;
+  stockNoDistribute?: any;
+  createTime?: any;
+  brandId: string;
+  moneyCost?: any;
+  marketPrize?: any;
+  id: string;
+  state?: any;
+  stock: number;
+  times?:string
+}
+export function queryTreasureList(): Promise<ITreasureItem[]> {
+  return request({
+    url: '/cms-manage/magic_center/query_list',
+    method: 'GET',
+  });
+}
+export function updateComponent(data) {
+  return request({
+    url: '/bdw-component-decoration-admin/activity/page/edit',
+    method: 'POST',
+    data
+  });
+}

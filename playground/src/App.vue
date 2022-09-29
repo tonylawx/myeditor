@@ -14,5 +14,8 @@ body,
   margin: 0;
   width: 100%;
   height: 100%;
+  .el-form-item.el-form-item{
+    margin-bottom: 10px !important;
+  }
 }
 </style>

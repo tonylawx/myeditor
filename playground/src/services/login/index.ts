@@ -1,5 +1,6 @@
+import axios from 'axios';
+
 import { request } from '../../utils/request';
-import axios from "axios";
 /**
  * @description 登录
  * @param {LoginParams} data
@@ -40,35 +41,6 @@ const menuPrefix = '/system';
 export async function getRouter(backMenu = true) {
   return request({
     url: backMenu ? `${menuPrefix}/menu/getRouters` : `${menuPrefix}/menu/mp/getRouters`,
-    method: 'GET',
-  });
-}
-export function gePageId(params: {
-  'pageName': string
-  'pageStatus': string
-  'pageUrl'?: string
-}) {
-  return request({
-    url: '/bdw-component-decoration-admin/activity/page/add',
-    method: 'POST',
-    data: params,
-  });
-}
-export interface IJSON {
-  jsonContent: string
-  zoneId: string
-}
-export function uploadOssJSON(params: IJSON) {
-  return request({
-    url: '/base-manage/file/upload/json',
-    method: 'POST',
-    data: params,
-  });
-}
-
-export function getDSL(pageId: string) {
-  return axios({
-    url: `https://test.img.betterwood.com/sys/hotelArea/json/${pageId}.json?stamp=${new Date().getTime()}`,
     method: 'GET',
   });
 }

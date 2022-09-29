@@ -1,14 +1,15 @@
 <template>
   <div class="good-sort-selector">
     <div class="good-sort-selector__draggable-goods">
-      <draggable
-        v-model.lazy="goods"
-        group="people"
-        item-key="id"
-      >
+      <draggable v-model.lazy="goods" group="people" item-key="id">
         <template #item="{ element }">
           <div class="good-sort-selector__draggable-goods__item">
-            <div>{{ element.name }}</div>
+            <el-tooltip :content="element.magicName" trigger="click">
+              <div class="good-sort-selector__draggable-goods__item__title">
+                {{ element.magicName }}
+              </div>
+            </el-tooltip>
+            {{ element.times }}
             <el-link @click="deleteGood(element, goods)">删除</el-link>
           </div>
         </template>
@@ -16,18 +17,28 @@
     </div>
     <div class="good-sort-selector__add-good">
       <el-link type="primary" @click="openGoodsModal">添加法宝</el-link
-      ><el-link>刷新组件数据</el-link>拖动可调节顺序
+      ><el-link @click="handleUpdate">刷新组件数据</el-link>拖动可调节顺序
     </div>
     <div class="good-sort-selector__hint">{{ hint }}</div>
-    <el-dialog v-model="dialogVisible" title="法宝" >
-      <el-form lable-postion="left" >
-        <el-form-item label="选择法宝">
+    <el-dialog v-model="dialogVisible" title="法宝" width="500">
+      <el-form lable-postion="left">
+        <el-form-item label="选择法宝" :rules="[{ required: true }]">
           <el-select v-model="treasureId">
-            <el-option v-for="(item,index) in tableData" :key="item.id" :value="item.id" :label="item.name"/>
+            <el-option
+              v-for="item in options"
+              :key="item.id"
+              :value="item.id"
+              :label="item.magicName"
+            />
           </el-select>
         </el-form-item>
-        <el-form-item label="领取次数">
-          <el-input type="number"/>
+        <el-form-item
+          style="margin-top: 10px"
+          label="领取次数"
+          min="1"
+          :rules="[{ required: true }]"
+        >
+          <el-input type="number" v-model="times" />
         </el-form-item>
       </el-form>
       <template #footer>
@@ -40,57 +51,89 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { defineProps, ref } from 'vue';
+import { defineEmits, defineProps, ref } from 'vue';
 import draggable from 'vuedraggable';
 import { find, findIndex } from 'lodash-es';
+import short from 'short-uuid';
 
-const goods = ref([]);
-const treasureId = ref('');
-const tableData = [
-  {
-    name: '法宝1',
-    price: '100',
-    merchant: '商家1',
-    type: '分类1',
-    id: '1',
-  },
-  {
-    name: '法宝2',
-    price: '50',
-    merchant: '商家2',
-    type: '分类2',
-    id: '2',
-  },
-];
+import {
+  ITreasureItem,
+  queryTreasureList,
+  updateComponent,
+} from '../../../../../../playground/src/services/editor';
+
+const goods = ref<ITreasureItem[]>([]);
+const treasureId = ref<string>('');
+const times = ref<string>('');
+const options = ref<ITreasureItem[]>([]);
 const dialogVisible = ref(false);
+const getTreasureList = async () => {
+  options.value = await queryTreasureList();
+};
+getTreasureList();
 defineProps({
   hint: {
     type: String,
     default: () => '',
   },
+  compId: {
+    type: String,
+    default: () => '',
+  },
 });
+const emits = defineEmits(['update:compId']);
 
 const openGoodsModal = () => {
   dialogVisible.value = true;
   treasureId.value = '';
+  times.value = '1';
 };
 const handleModalConfirm = () => {
   dialogVisible.value = false;
-  const item = find(tableData, { id: treasureId.value });
-  goods.value.push(item as never);
+  const id = treasureId.value;
+  const item = find(options.value, { id }) as ITreasureItem;
+  item.times = times.value;
+  goods.value.push(item);
 };
 const deleteGood = (good: any, goods: any) => {
   const index = findIndex(goods, good);
   goods.splice(index, 1);
+};
+const handleUpdate = () => {
+  const comsId = short.generate();
+  const tmp = {
+    id: '111111',
+    components: [
+      {
+        components: goods.value.map(item => ({
+          paramValue: item.times,
+          paramType: '3',
+          paramId: item.id,
+        })),
+        comsId,
+      },
+    ],
+  };
+  updateComponent(tmp).then(() => {
+    emits('update:compId', comsId);
+  });
 };
 </script>
 
 <style scoped lang="scss">
 .good-sort-selector {
   &__draggable-goods {
+    width: 300px;
+
     &__item {
       display: flex;
       justify-content: space-around;
+      &__title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 200px;
+      }
     }
   }
   &__add-good {

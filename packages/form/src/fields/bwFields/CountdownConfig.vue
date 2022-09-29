@@ -43,8 +43,8 @@ const res = reactive(Object.assign({},{
 const dialogVisible = ref(false);
 watch(res, (value) => {
   const tmp = cloneDeep(value)
- if(tmp.startTime) tmp.startTime = new Date(tmp.startTime).getTime()
-  if(tmp.endTime)tmp.endTime = new Date(tmp.endTime).getTime()
+ if(tmp.startTime) tmp.startTime = new Date(tmp.startTime).getTime().toString()
+  if(tmp.endTime)tmp.endTime = new Date(tmp.endTime).getTime().toString()
   emit('change',tmp)
 })
 </script>

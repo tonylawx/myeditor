@@ -37,7 +37,7 @@
         </el-radio-group>
       </el-form-item>
     </el-form>
-    <TreasureSortSelector />
+    <TreasureSortSelector v-model:compId="res.compId" />
   </div>
 </template>
 <script lang="ts" setup>
