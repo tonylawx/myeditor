@@ -14,9 +14,9 @@
       :auto-scroll-into-view="true"
       :stage-rect="stageRect"
     >
-      <template #workspace-content>
-        <!--        <DeviceGroup v-model="stageRect"></DeviceGroup>-->
-      </template>
+<!--      <template #workspace-content>-->
+<!--        &lt;!&ndash;        <DeviceGroup v-model="stageRect"></DeviceGroup>&ndash;&gt;-->
+<!--      </template>-->
     </m-editor>
 
     <el-dialog
@@ -38,7 +38,7 @@
 
 <script lang="ts" setup>
 import { computed, ref, toRaw } from 'vue';
-import { useRouter } from 'vue-router';
+// import { useRouter } from 'vue-router';
 import { Coin, Connection, Document } from '@element-plus/icons-vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import serialize from 'serialize-javascript';
@@ -52,7 +52,7 @@ import { asyncLoadJs } from '@tmagic/utils';
 // import DeviceGroup from '../components/DeviceGroup.vue';
 import componentGroupList from '../configs/componentGroupList';
 import dsl from '../configs/dsl';
-import { gePageId, login, uploadOssJSON } from '../services/login/index';
+import { gePageId, uploadOssJSON } from '../services/login';
 import { useMainStore } from '../store/main';
 
 const { VITE_RUNTIME_PATH, VITE_ENTRY_PATH } = import.meta.env;
@@ -74,19 +74,14 @@ const stageRect = ref({
 // const previewUrl = computed(() => `${VITE_RUNTIME_PATH}/page/index.html?localPreview=1&page=${editor.value?.editorService.get('page').id}`);
 const previewUrl = computed(() => 'https://testh5.betterwood.com/#/magic');
 const params = new URLSearchParams(window.location.search);
-const status = params.get('status');
-const activityId  = params.get('activityId');
-
+const status = params.get('status'); // copy edit
+const pageId = params.get('pageId');
+// const pageJSON = `https://test.img.betterwood.com/sys/hotelArea/json/${pageId}.json`;
+// if(pageId){
+//   value.value =
+// }
 const store = useMainStore();
-// const loginin = async () => {
-//   const loginRes = await login({
-//     username: 'admin',
-//     password: '123456',
-//   });
 store.update_token(params.get('token') || undefined);
-//   ElMessage.success('登陆成功！');
-// };
-// loginin();
 
 const menu: MenuBarData = {
   left: [
@@ -168,24 +163,28 @@ const moveableOptions = (core?: StageCore): MoveableOptions => {
 };
 
 const save = () => {
-  const DSL =   serialize(toRaw(value.value), {
+  const rawObj = toRaw(value.value);
+  const DSL = serialize(rawObj, {
     space: 2,
     unsafe: true,
   }).replace(/"(\w+)":\s/g, '$1: ');
-  localStorage.setItem(
-    'magicDSL',
-    DSL,
-  );
+  localStorage.setItem('magicDSL', DSL);
   editor.value?.editorService.resetModifiedNodeId();
-  gePageId({
-    pageName: '测试名称1',
-    pageStatus: '0',
-    pageUrl: 'xxxx',
-  }).then((res) => {
-    uploadOssJSON({ zoneId: res, jsonContent: DSL }).then((res) => {
+  if (!pageId || status === 'copy') {
+    gePageId({
+      pageName: '测试名称1',
+      pageStatus: '0',
+      pageUrl: '',
+    }).then((res) => {
+      uploadOssJSON({ zoneId: res, jsonContent: JSON.stringify(rawObj) }).then((res) => {
+        ElMessage.success('新建页面成功');
+      });
+    });
+  } else {
+    uploadOssJSON({ zoneId: pageId, jsonContent: JSON.stringify(rawObj) }).then((res) => {
       ElMessage.success('新建页面成功');
     });
-  });
+  }
 };
 
 asyncLoadJs(`${VITE_ENTRY_PATH}/config/index.umd.js`).then(() => {

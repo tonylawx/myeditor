@@ -8,7 +8,7 @@ export default [
         icon: FolderOpened,
         text: '组',
         type: 'container',
-      }
+      },
     ],
   },
   {
