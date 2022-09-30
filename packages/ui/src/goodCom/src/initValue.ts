@@ -17,5 +17,11 @@
  */
 
 export default {
-  style: { position: "relative", top: 0, left: 0, width: 375, height: 200 },
+  style: {
+    position: 'relative',
+    top: 0,
+    left: 0,
+    width: 375,
+    height: 200,
+  },
 };
