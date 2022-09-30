@@ -108,8 +108,8 @@ const handleUpdate = () => {
       {
         components: goods.value.map(item => ({
           paramValue: item.times,
-          paramType: '3',
           paramId: item.id,
+          componentType: '3'
         })),
         comsId,
       },

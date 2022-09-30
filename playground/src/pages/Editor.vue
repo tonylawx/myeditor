@@ -75,7 +75,7 @@ const stageRect = ref({
 // const previewUrl = computed(() => `${VITE_RUNTIME_PATH}/page/index.html?localPreview=1&page=${editor.value?.editorService.get('page').id}`);
 const previewUrl = computed(() => 'https://testh5.betterwood.com/#/magic');
 const params = new URLSearchParams(window.location.search);
-// const status = params.get('status'); // copy edit
+const status = params.get('status'); // copy edit
 let pageId = params.get('pageId');
 LocalStorage.setItem('pageId', pageId);
 if (pageId) {
@@ -184,7 +184,13 @@ const save = () => {
   }).replace(/"(\w+)":\s/g, '$1: ');
   localStorage.setItem('magicDSL', DSL);
   editor.value?.editorService.resetModifiedNodeId();
-  uploadOssJSON({ zoneId: pageId as string, jsonContent: JSON.stringify(rawObj) }).then(res => ElMessage.success('新建页面成功'));
+  uploadOssJSON({ zoneId: pageId as string, jsonContent: JSON.stringify(rawObj) }).then((res) => {
+    if (!status || status === 'copy') {
+      ElMessage.success('新建页面成功');
+    } else {
+      ElMessage.success('修改页面成功');
+    }
+  });
 };
 
 asyncLoadJs(`${VITE_ENTRY_PATH}/config/index.umd.js`).then(() => {
