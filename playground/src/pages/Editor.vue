@@ -76,7 +76,7 @@ const stageRect = ref({
 const previewUrl = computed(() => 'https://testh5.betterwood.com/#/magic');
 const params = new URLSearchParams(window.location.search);
 const status = params.get('status'); // copy edit
-const pageId = params.get('pageId');
+let pageId = params.get('pageId');
 LocalStorage.setItem('pageId', pageId);
 if (pageId) {
   getDSL(pageId).then((res) => {
@@ -84,15 +84,15 @@ if (pageId) {
     value.value = data;
   });
 } else {
-  // newPage({
-  //   pageName: '未命名页面',
-  //   pageStatus: '0',
-  //   pageUrl: '',
-  // }).then((res) => {
-  //   pageId = res;
-  //   LocalStorage.setItem('pageId', pageId);
-  //   // ElMessage.success('新建页面成功');
-  // });
+  newPage({
+    pageName: '未命名页面',
+    pageStatus: '0',
+    pageUrl: '',
+  }).then((res) => {
+    pageId = res;
+    LocalStorage.setItem('pageId', pageId);
+    // ElMessage.success('新建页面成功');
+  });
 }
 const store = useMainStore();
 store.update_token(params.get('token') || undefined);
