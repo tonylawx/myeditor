@@ -9,13 +9,7 @@ export async function getRouter(backMenu = true) {
     method: 'GET',
   });
 }
-export function gePageId(params: { pageName: string; pageStatus: string; pageUrl?: string }) {
-  return request({
-    url: '/bdw-component-decoration-admin/activity/page/add',
-    method: 'POST',
-    data: params,
-  });
-}
+
 export interface IJSON {
   jsonContent: string;
   zoneId: string;
@@ -48,7 +42,7 @@ export interface ITreasureItem {
   id: string;
   state?: any;
   stock: number;
-  times?:string
+  times?: string;
 }
 export function queryTreasureList(): Promise<ITreasureItem[]> {
   return request({
@@ -56,10 +50,43 @@ export function queryTreasureList(): Promise<ITreasureItem[]> {
     method: 'GET',
   });
 }
-export function updateComponent(data) {
+export interface Component2 {
+  comment: string;
+  componentType: number;
+  paramId: string;
+  paramName: string;
+  paramPath: string;
+  paramType: string;
+  paramValue: string;
+}
+
+export interface Component {
+  components: Component2[];
+  comsId: string;
+}
+
+export interface IPageParams {
+  activityId: string;
+  components: Component[];
+  id: string;
+  pageName: string;
+  pageStatus: string;
+  pageUrl: string;
+  publishTiming: string;
+}
+
+export function newPage(data: Partial<IPageParams>) {
+  return request({
+    url: '/bdw-component-decoration-admin/activity/page/add',
+    method: 'POST',
+    data,
+  });
+}
+
+export function updatePage(data: Partial<IPageParams>) {
   return request({
     url: '/bdw-component-decoration-admin/activity/page/edit',
     method: 'POST',
-    data
+    data,
   });
 }

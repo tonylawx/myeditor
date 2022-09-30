@@ -53,7 +53,7 @@ import { asyncLoadJs } from '@tmagic/utils';
 // import DeviceGroup from '../components/DeviceGroup.vue';
 import componentGroupList from '../configs/componentGroupList';
 import dsl from '../configs/dsl';
-import { gePageId, getDSL, uploadOssJSON } from '../services/editor';
+import { getDSL, newPage, uploadOssJSON } from '../services/editor';
 import { useMainStore } from '../store/main';
 
 const { VITE_RUNTIME_PATH, VITE_ENTRY_PATH } = import.meta.env;
@@ -75,13 +75,23 @@ const stageRect = ref({
 // const previewUrl = computed(() => `${VITE_RUNTIME_PATH}/page/index.html?localPreview=1&page=${editor.value?.editorService.get('page').id}`);
 const previewUrl = computed(() => 'https://testh5.betterwood.com/#/magic');
 const params = new URLSearchParams(window.location.search);
-const status = params.get('status'); // copy edit
-const pageId = params.get('pageId');
+// const status = params.get('status'); // copy edit
+let pageId = params.get('pageId');
 LocalStorage.setItem('pageId', pageId);
 if (pageId) {
   getDSL(pageId).then((res) => {
     const { data } = res;
     value.value = data;
+  });
+} else {
+  newPage({
+    pageName: '未命名页面',
+    pageStatus: '0',
+    pageUrl: '',
+  }).then((res) => {
+    pageId = res;
+    LocalStorage.setItem('pageId', pageId);
+    // ElMessage.success('新建页面成功');
   });
 }
 const store = useMainStore();
@@ -174,21 +184,7 @@ const save = () => {
   }).replace(/"(\w+)":\s/g, '$1: ');
   localStorage.setItem('magicDSL', DSL);
   editor.value?.editorService.resetModifiedNodeId();
-  if (!pageId || status === 'copy') {
-    gePageId({
-      pageName: '测试名称1',
-      pageStatus: '0',
-      pageUrl: '',
-    }).then((res) => {
-      uploadOssJSON({ zoneId: res, jsonContent: JSON.stringify(rawObj) }).then((res) => {
-        ElMessage.success('新建页面成功');
-      });
-    });
-  } else {
-    uploadOssJSON({ zoneId: pageId, jsonContent: JSON.stringify(rawObj) }).then((res) => {
-      ElMessage.success('新建页面成功');
-    });
-  }
+  uploadOssJSON({ zoneId: pageId as string, jsonContent: JSON.stringify(rawObj) }).then(res => ElMessage.success('新建页面成功'));
 };
 
 asyncLoadJs(`${VITE_ENTRY_PATH}/config/index.umd.js`).then(() => {

@@ -59,7 +59,7 @@ import short from 'short-uuid';
 import {
   ITreasureItem,
   queryTreasureList,
-  updateComponent,
+  updatePage,
 } from '../../../../../../playground/src/services/editor';
 
 const goods = ref<ITreasureItem[]>([]);
@@ -100,9 +100,10 @@ const deleteGood = (good: any, goods: any) => {
   goods.splice(index, 1);
 };
 const handleUpdate = () => {
-  const comsId = short.generate();
+  const pageId = JSON.parse(localStorage.getItem('pageId') || '');
+  const comsId = new Date().getTime();
   const tmp = {
-    id: '111111',
+    id: pageId,
     components: [
       {
         components: goods.value.map(item => ({
@@ -114,7 +115,7 @@ const handleUpdate = () => {
       },
     ],
   };
-  updateComponent(tmp).then(() => {
+  updatePage(tmp).then(() => {
     emits('update:compId', comsId);
   });
 };
