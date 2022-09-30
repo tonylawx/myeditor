@@ -62,7 +62,7 @@
             <el-radio label="column" size="large">双列</el-radio>
           </el-radio-group>
         </div>
-        <GoodSortSelect hint="最小限2个商品，最大限50个商品" />
+        <GoodSortSelect hint="最小限2个商品，最大限50个商品" v-model:comp-id="item.compId" />
       </el-card>
     </div>
     <div class="goods-selector__add-group">

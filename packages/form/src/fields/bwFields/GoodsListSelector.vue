@@ -38,7 +38,7 @@
         </el-radio-group>
       </el-form-item>
     </el-form>
-    <GoodSortSelect hint="最小限2个商品，最大限20个商品"/>
+    <GoodSortSelect v-model:comp-id="res.goodComItem.compId" hint="最小限2个商品，最大限20个商品"/>
   </div>
 </template>
 <script lang="ts" setup>

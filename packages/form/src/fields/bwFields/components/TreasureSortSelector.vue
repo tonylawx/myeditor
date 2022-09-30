@@ -54,7 +54,6 @@
 import { defineEmits, defineProps, ref } from 'vue';
 import draggable from 'vuedraggable';
 import { find, findIndex } from 'lodash-es';
-import short from 'short-uuid';
 
 import {
   ITreasureItem,

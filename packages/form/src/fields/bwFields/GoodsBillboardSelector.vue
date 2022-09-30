@@ -37,7 +37,7 @@
         </el-radio-group>
       </el-form-item>
     </el-form>
-    <GoodSortSelect hint="榜单数量不能超过30"/>
+    <GoodSortSelect hint="榜单数量不能超过30" v-model:comp-id="res.goodComItem.compId"/>
   </div>
 </template>
 <script lang="ts" setup>
@@ -64,8 +64,10 @@ const res = reactive(
     {},
     {
       auto:true,
-      compId: '', // 获取商品组件数据的ID
-      comType:'list'
+      goodComItem:{
+        compId: '', // 获取商品组件数据的ID
+        comType:'list'
+      }
     },
     cloneDeep(props.model[props.name])
   )
