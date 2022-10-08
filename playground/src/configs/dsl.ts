@@ -18,5 +18,20 @@
 
 export default {
   type: 'app',
-  items: [],
-}
+  items: [
+    {
+      id: 'page_6619cc6b',
+      type: 'page',
+      layout: 'relative',
+      style: {
+        width: '100%',
+        height: '100%',
+        position: 'relative',
+        top: 0,
+        left: 0,
+      },
+      name: 'index',
+      items: [],
+    },
+  ],
+};
