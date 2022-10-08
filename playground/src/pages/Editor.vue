@@ -71,13 +71,16 @@ const stageRect = ref({
   width: 375,
   height: 817,
 });
-
+const store = useMainStore();
 // const previewUrl = computed(() => `${VITE_RUNTIME_PATH}/page/index.html?localPreview=1&page=${editor.value?.editorService.get('page').id}`);
 const previewUrl = computed(() => 'https://testh5.betterwood.com/#/magic');
 const params = new URLSearchParams(window.location.search);
 const status = params.get('status'); // copy edit
 let pageId = params.get('pageId');
+const token = params.get('token') || '';
+store.update_token(token);
 LocalStorage.setItem('pageId', pageId);
+
 if (pageId) {
   getDSL(pageId).then((res) => {
     const { data } = res;
@@ -94,8 +97,7 @@ if (pageId) {
     // ElMessage.success('新建页面成功');
   });
 }
-const store = useMainStore();
-store.update_token(params.get('token') || undefined);
+
 
 const menu: MenuBarData = {
   left: [
