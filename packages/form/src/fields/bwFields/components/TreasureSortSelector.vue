@@ -52,10 +52,10 @@
 </template>
 <script lang="ts" setup>
 import { defineEmits, defineProps, ref } from 'vue';
-import draggable from 'vuedraggable';
 import { find, findIndex } from 'lodash-es';
 
 import {
+  IPageParams,
   ITreasureItem,
   queryTreasureList,
   updatePage,
@@ -108,13 +108,13 @@ const handleUpdate = () => {
         components: goods.value.map(item => ({
           paramValue: item.times,
           paramId: item.id,
-          componentType: '3'
+          componentType: '3',
         })),
         comsId,
       },
     ],
   };
-  updatePage(tmp).then(() => {
+  updatePage(tmp as unknown as Partial<IPageParams>).then(() => {
     emits('update:compId', comsId);
   });
 };

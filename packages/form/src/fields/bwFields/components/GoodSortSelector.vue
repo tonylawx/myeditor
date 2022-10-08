@@ -73,17 +73,19 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { defineEmits, defineProps, nextTick, reactive, ref, watch } from 'vue';
+import {defineEmits, defineProps, nextTick, reactive, ref, watch} from 'vue';
 import Daggable from 'vuedraggable';
-import { ElMessage, ElTable } from 'element-plus';
+import {ElMessage, ElTable} from 'element-plus';
 // 对话框flag
-import { cloneDeep, findIndex, uniqBy } from 'lodash-es';
+import {cloneDeep, findIndex, uniqBy} from 'lodash-es';
 
 import {
   Data,
   getGoodGroupList,
   getGoodList,
   IGoodsItem,
+  IGoodsParams,
+  IPageParams,
   updatePage,
 } from '../../../../../../playground/src/services/editor';
 
@@ -93,7 +95,7 @@ const dialogVisible = ref(false);
 const multipleTableRef = ref<InstanceType<typeof ElTable>>();
 const total = ref<number>(0);
 const loading = ref<boolean>(false);
-const option = ref([]);
+const option = ref<any[]>([]);
 class SearchParams {
   current: number;
   size: number;
@@ -120,7 +122,7 @@ defineProps({
 const emits = defineEmits(['update:compId']);
 const getTableData = () => {
   loading.value = true;
-  getGoodList(searchParams)
+  getGoodList(searchParams as Partial<IGoodsParams>)
     .then((res: Data) => {
       tableData.value = res.records;
       total.value = res.total;
@@ -173,7 +175,7 @@ const handleUpdate = () => {
       },
     ],
   };
-  updatePage(tmp).then(() => {
+  updatePage(tmp as unknown as Partial<IPageParams>).then(() => {
     emits('update:compId', comsId);
   });
 };
