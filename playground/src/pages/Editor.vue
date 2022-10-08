@@ -84,6 +84,7 @@ LocalStorage.setItem('pageId', pageId);
 if (pageId) {
   getDSL(pageId).then((res) => {
     const { data } = res;
+    console.log(data);
     value.value = data;
   });
 } else {

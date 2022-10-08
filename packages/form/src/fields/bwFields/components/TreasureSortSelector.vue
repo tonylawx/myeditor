@@ -1,7 +1,7 @@
 <template>
   <div class="good-sort-selector">
     <div class="good-sort-selector__draggable-goods">
-      <draggable v-model.lazy="goods" group="people" item-key="id">
+      <Daggable v-model.lazy="goods" group="people" item-key="id">
         <template #item="{ element }">
           <div class="good-sort-selector__draggable-goods__item">
             <el-tooltip :content="element.magicName" trigger="click">
@@ -13,7 +13,7 @@
             <el-link @click="deleteGood(element, goods)">删除</el-link>
           </div>
         </template>
-      </draggable>
+      </Daggable>
     </div>
     <div class="good-sort-selector__add-good">
       <el-link type="primary" @click="openGoodsModal">添加法宝</el-link
@@ -52,6 +52,7 @@
 </template>
 <script lang="ts" setup>
 import { defineEmits, defineProps, ref } from 'vue';
+import Daggable from 'vuedraggable';
 import { find, findIndex } from 'lodash-es';
 
 import {
