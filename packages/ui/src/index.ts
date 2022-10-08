@@ -55,7 +55,7 @@ const ui: Record<string, any> = {
   treasurecom: Treasure,
   textcom: RichText,
   navcom: Navcom,
-  hotgood: Hotgood,
+  hotgoodcom: Hotgood,
 };
 
 export default ui;

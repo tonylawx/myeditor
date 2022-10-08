@@ -57,7 +57,7 @@ export default [
       {
         icon: Grid,
         text: '榜单商品',
-        type: 'hotgood',
+        type: 'hotgoodcom',
       },
     ],
   },
