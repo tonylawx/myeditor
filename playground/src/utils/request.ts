@@ -21,7 +21,7 @@ const service = axios.create({
 
 // 请求拦截器
 service.interceptors.request.use(
-  (config) =>
+  config =>
     // const token = localStorage.get(ACCESS_TOKEN_KEY);
     // if (token && config.headers) {
     //   // 请求头token信息，请根据实际情况进行修改
@@ -102,9 +102,9 @@ export const request = async <T = any>(config: AxiosRequestConfig): Promise<T> =
   // @ts-ignore
   return service
     .request<any, T>({
-      ...config,
-      headers,
-    })
-    .then((res) => Promise.resolve(res))
-    .catch((err) => Promise.reject(err));
+    ...config,
+    headers,
+  })
+    .then(res => Promise.resolve(res))
+    .catch(err => Promise.reject(err));
 };
