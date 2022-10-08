@@ -88,7 +88,7 @@ if (pageId) {
   });
 } else {
   newPage({
-    pageName: '未命名页面',
+    pageName: `未命名页面${new Date().getTime()}`,
     pageStatus: '0',
     pageUrl: '',
   }).then((res) => {
