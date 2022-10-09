@@ -45,6 +45,11 @@ export default [
         name: 'pageDesc',
         type: 'textarea',
       },
+      {
+        text: '背景',
+        name: 'bgOptions',
+        type: 'background-selector',
+      },
     ],
   },
   {
@@ -62,6 +67,11 @@ export default [
         text: '分享描述',
         name: 'shareDesc',
         type: 'textarea',
+      },
+      {
+        text: '小程序分享图片',
+        name: 'shareImg',
+        type: 'upload-picture',
       },
     ],
   },

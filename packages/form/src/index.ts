@@ -27,6 +27,8 @@ import MStep from './containers/Step.vue';
 import Table from './containers/Table.vue';
 import Tabs from './containers/Tabs.vue';
 import ActivitySelector from './fields/bwFields/ActivitySelector.vue';
+import BackgroundSelector from './fields/bwFields/BackgroundSelector.vue';
+import UploadPicture from './fields/bwFields/basisField/UploadPicture.vue';
 import CountdownConfig from './fields/bwFields/CountdownConfig.vue';
 import GoodsBillboardSelector from './fields/bwFields/GoodsBillboardSelector.vue';
 import GoodsGroupSelector from './fields/bwFields/GoodsGroupSelector.vue';
@@ -156,6 +158,8 @@ const install = (app: App, opt: any) => {
   app.component(NavConfig.name, NavConfig);
   app.component(GoodsBillboardSelector.name, GoodsBillboardSelector);
   app.component(ActivitySelector.name, ActivitySelector);
+  app.component(BackgroundSelector.name, BackgroundSelector);
+  app.component(UploadPicture.name, UploadPicture);
 };
 
 export default {

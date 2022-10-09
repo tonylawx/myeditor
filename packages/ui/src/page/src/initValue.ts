@@ -17,6 +17,12 @@
  */
 
 export default {
+  bgOptions: {
+    type: 'color',
+    bgColor: '',
+    bgImg: '',
+  },
+  shareImg: '',
   items: [],
   style: {
     width: '100%',
