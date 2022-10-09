@@ -17,7 +17,7 @@ export default [
       {
         icon: Grid,
         text: '视频组件',
-        type: 'videwcom',
+        type: 'videocom',
       },
       {
         icon: Grid,
@@ -32,7 +32,7 @@ export default [
       {
         icon: Grid,
         text: '富文本',
-        type: 'richtext',
+        type: 'textcom',
       },
       {
         icon: Grid,

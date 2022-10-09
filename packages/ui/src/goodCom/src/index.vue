@@ -1,9 +1,12 @@
 <template>
-  <div>
-    <div v-for="(item, index) in fieldNames" :key="index">
-      {{ item }}:
-      <pre>{{ JSON.stringify(config[item], null, 4) }}</pre>
-    </div>
+<!--  <div>-->
+<!--    <div v-for="(item, index) in fieldNames" :key="index">-->
+<!--      {{ item }}:-->
+<!--      <pre>{{ JSON.stringify(config[item], null, 4) }}</pre>-->
+<!--    </div>-->
+<!--  </div>-->
+  <div style="background: #00ffff;text-align: center;padding-top: 20px" >
+    商品组件
   </div>
 </template>
 <script setup lang="ts">
@@ -22,5 +25,5 @@ const props = defineProps({
     default: () => ({}),
   },
 });
-const fieldNames = formConfig.map((item) => item.name);
+const fieldNames = formConfig.map(item => item.name);
 </script>
