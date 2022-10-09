@@ -24,7 +24,7 @@ export function uploadOssJSON(params: IJSON) {
 
 export function getDSL(pageId: string) {
   return axios({
-    url: `https://test.img.betterwood.com/sys/hotelArea/json/${pageId}.json?stamp=${new Date().getTime()}`,
+    url: `https://uat.img.betterwood.com/sys/hotelArea/json/${pageId}.json?stamp=${new Date().getTime()}`,
     method: 'GET',
   });
 }
