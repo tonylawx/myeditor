@@ -26,13 +26,17 @@ import Row from './containers/Row.vue';
 import MStep from './containers/Step.vue';
 import Table from './containers/Table.vue';
 import Tabs from './containers/Tabs.vue';
+import ActivitySelector from './fields/bwFields/ActivitySelector.vue';
 import CountdownConfig from './fields/bwFields/CountdownConfig.vue';
+import GoodsBillboardSelector from './fields/bwFields/GoodsBillboardSelector.vue';
 import GoodsGroupSelector from './fields/bwFields/GoodsGroupSelector.vue';
 import GoodsListSelector from './fields/bwFields/GoodsListSelector.vue';
 import HoverWindowConfig from './fields/bwFields/HoverWindowConfig.vue';
+import NavConfig from './fields/bwFields/NavConfig.vue';
 import PictureSelector from './fields/bwFields/PictureSelector.vue';
 import RichText from './fields/bwFields/RichText.vue';
 import TitleConfig from './fields/bwFields/TitleConfig.vue';
+import TreasureSelector from './fields/bwFields/TreasureSelector.vue';
 import VideoConfig from './fields/bwFields/VideoConfig.vue';
 import Cascader from './fields/Cascader.vue';
 import Checkbox from './fields/Checkbox.vue';
@@ -55,9 +59,6 @@ import Time from './fields/Time.vue';
 import { setConfig } from './utils/config';
 import Form from './Form.vue';
 import FormDialog from './FormDialog.vue';
-import TreasureSelector from "./fields/bwFields/TreasureSelector.vue";
-import NavConfig from "./fields/bwFields/NavConfig.vue";
-import GoodsBillboardSelector from "./fields/bwFields/GoodsBillboardSelector.vue";
 
 import './theme/index.scss';
 import 'vue-cropper/dist/index.css';
@@ -154,6 +155,7 @@ const install = (app: App, opt: any) => {
   app.component(TreasureSelector.name, TreasureSelector);
   app.component(NavConfig.name, NavConfig);
   app.component(GoodsBillboardSelector.name, GoodsBillboardSelector);
+  app.component(ActivitySelector.name, ActivitySelector);
 };
 
 export default {

@@ -16,22 +16,60 @@
  * limitations under the License.
  */
 
+
 export default [
+  // {
+  //   text: '页面标识',
+  //   name: 'name',
+  //   disabled: true,
+  //   extra: '在多页面的情况下用来指定要打开的页面',
+  // },
   {
-    text: '页面标识',
-    name: 'name',
-    disabled: true,
-    extra: '在多页面的情况下用来指定要打开的页面',
+    type: 'fieldset',
+    labelWidth: 100,
+    legend: '基础信息',
+    items: [
+      {
+        text: '页面名称',
+        name: 'pageName',
+        placeholder: '请输入页面名称15字以内',
+        trim: true,
+      },
+      {
+        text: '所属活动',
+        name: 'relativeActivity',
+        type: 'activity-selector',
+      },
+      {
+        text: '页面描述',
+        name: 'pageDesc',
+        type: 'textarea',
+      },
+    ],
   },
   {
-    text: '页面标题',
-    name: 'title',
+    type: 'fieldset',
+    labelWidth: 100,
+    legend: '分享信息',
+    items: [
+      {
+        text: '分享标题',
+        name: 'shareTitle',
+        placeholder: '请输入分享标题15字已内',
+        trim: true,
+      },
+      {
+        text: '分享描述',
+        name: 'shareDesc',
+        type: 'textarea',
+      },
+    ],
   },
   {
     name: 'layout',
     text: '容器布局',
     type: 'select',
-    defaultValue: 'absolute',
+    defaultValue: 'relative',
     options: [
       { value: 'absolute', text: '绝对定位' },
       { value: 'relative', text: '流式布局' },

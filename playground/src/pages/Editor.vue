@@ -38,10 +38,10 @@
 
 <script lang="ts" setup>
 import { computed, ref, toRaw } from 'vue';
-import { LocalStorage } from '@bdwjs/localstorage';
 // import { useRouter } from 'vue-router';
 import { Coin, Connection, Document } from '@element-plus/icons-vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
+import { get } from 'lodash-es';
 import serialize from 'serialize-javascript';
 
 import { editorService, MenuBarData, MoveableOptions, TMagicEditor } from '@tmagic/editor';
@@ -53,8 +53,9 @@ import { asyncLoadJs } from '@tmagic/utils';
 // import DeviceGroup from '../components/DeviceGroup.vue';
 import componentGroupList from '../configs/componentGroupList';
 import dsl from '../configs/dsl';
-import { getDSL, newPage, uploadOssJSON } from '../services/editor';
+import { getDSL, newPage, updatePage, uploadOssJSON } from '../services/editor';
 import { useMainStore } from '../store/main';
+import * as TYPES from '../store/type';
 
 const { VITE_RUNTIME_PATH, VITE_ENTRY_PATH } = import.meta.env;
 
@@ -73,13 +74,13 @@ const stageRect = ref({
 });
 const store = useMainStore();
 // const previewUrl = computed(() => `${VITE_RUNTIME_PATH}/page/index.html?localPreview=1&page=${editor.value?.editorService.get('page').id}`);
-const previewUrl = computed(() => 'https://testh5.betterwood.com/#/magic');
+const previewUrl = computed(() => `https://testh5.betterwood.com/#/magic?pageId=${store.pageId}`);
 const params = new URLSearchParams(window.location.search);
 const status = params.get('status'); // copy edit
-let pageId = params.get('pageId');
+let pageId = params.get('pageId') || undefined;
 const token = params.get('token') || '';
 store.update_token(token);
-LocalStorage.setItem('pageId', pageId);
+store[TYPES.UPDATE_PAGE_ID](pageId);
 
 if (pageId) {
   getDSL(pageId).then((res) => {
@@ -94,11 +95,9 @@ if (pageId) {
     pageUrl: '',
   }).then((res) => {
     pageId = res;
-    LocalStorage.setItem('pageId', pageId);
-    // ElMessage.success('新建页面成功');
+    store[TYPES.UPDATE_PAGE_ID](pageId);
   });
 }
-
 
 const menu: MenuBarData = {
   left: [
@@ -179,7 +178,7 @@ const moveableOptions = (core?: StageCore): MoveableOptions => {
   return options;
 };
 
-const save = () => {
+const save = async () => {
   const rawObj = toRaw(value.value);
   const DSL = serialize(rawObj, {
     space: 2,
@@ -187,6 +186,21 @@ const save = () => {
   }).replace(/"(\w+)":\s/g, '$1: ');
   localStorage.setItem('magicDSL', DSL);
   editor.value?.editorService.resetModifiedNodeId();
+  console.log(rawObj);
+  const pageName = get(rawObj, 'items[0].pageName');
+  const shareTitle = get(rawObj, 'items[0].shareTitle');
+  const relativeActivity = get(rawObj, 'items[0].relativeActivity');
+  if (!pageName) {
+    return ElMessage.warning('请填写页面名称');
+  }
+  if (!shareTitle) {
+    return ElMessage.warning('请填写分享标题');
+  }
+  await updatePage({
+    pageName,
+    activityId: relativeActivity,
+    id: pageId,
+  });
   uploadOssJSON({ zoneId: pageId as string, jsonContent: JSON.stringify(rawObj) }).then((res) => {
     if (!status || status === 'copy') {
       ElMessage.success('新建页面成功');
