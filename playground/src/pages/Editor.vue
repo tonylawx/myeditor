@@ -74,7 +74,7 @@ const stageRect = ref({
 });
 const store = useMainStore();
 // const previewUrl = computed(() => `${VITE_RUNTIME_PATH}/page/index.html?localPreview=1&page=${editor.value?.editorService.get('page').id}`);
-const previewUrl = computed(() => `https://uath5.betterwood.com/#/magic?pageId=${store.pageId}`);
+const previewUrl = computed(() => `https://uath5.betterwood.com/#/magic?pageId=${store.pageId}&isPreview=1`);
 const params = new URLSearchParams(window.location.search);
 const status = params.get('status'); // copy edit
 let pageId = params.get('pageId') || undefined;
