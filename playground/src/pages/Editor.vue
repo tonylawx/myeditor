@@ -14,9 +14,6 @@
       :auto-scroll-into-view="true"
       :stage-rect="stageRect"
     >
-      <!--      <template #workspace-content>-->
-      <!--        &lt;!&ndash;        <DeviceGroup v-model="stageRect"></DeviceGroup>&ndash;&gt;-->
-      <!--      </template>-->
     </m-editor>
 
     <el-dialog
@@ -33,28 +30,50 @@
         :src="previewUrl"
       ></iframe>
     </el-dialog>
+    <el-dialog
+      v-model="publishTimingDialog"
+      title="定时发布"
+      width="30%"
+      @open="publishTiming = null"
+    >
+      <el-form>
+        <el-form-item label="发布时间">
+          <el-date-picker
+            type="datetime"
+            v-model="publishTiming"
+            value-format="YYYY-MM-DD HH:mm:ss"
+          />
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="publishTimingDialog = false">取消</el-button>
+          <el-button type="primary" @click="handleDelayPublish">确定</el-button>
+        </span>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, toRaw } from 'vue';
+import {computed, ref, toRaw} from 'vue';
 // import { useRouter } from 'vue-router';
-import { Coin, Connection, Document } from '@element-plus/icons-vue';
-import { ElMessage, ElMessageBox } from 'element-plus';
-import { get } from 'lodash-es';
+import {Coin, Connection, Document} from '@element-plus/icons-vue';
+import {ElMessage, ElMessageBox} from 'element-plus';
+import {get} from 'lodash-es';
 import serialize from 'serialize-javascript';
 
-import { editorService, MenuBarData, MoveableOptions, TMagicEditor } from '@tmagic/editor';
-import type { Id, MContainer, MNode } from '@tmagic/schema';
-import { NodeType } from '@tmagic/schema';
+import {editorService, MenuBarData, MoveableOptions, TMagicEditor} from '@tmagic/editor';
+import type {Id, MContainer, MNode} from '@tmagic/schema';
+import {NodeType} from '@tmagic/schema';
 import StageCore from '@tmagic/stage';
-import { asyncLoadJs } from '@tmagic/utils';
+import {asyncLoadJs} from '@tmagic/utils';
 
 // import DeviceGroup from '../components/DeviceGroup.vue';
 import componentGroupList from '../configs/componentGroupList';
 import dsl from '../configs/dsl';
-import { getDSL, newPage, updatePage, uploadOssJSON } from '../services/editor';
-import { useMainStore } from '../store/main';
+import {getDSL, newPage, updatePage, updatePageStatus, uploadOssJSON} from '../services/editor';
+import {useMainStore} from '../store/main';
 import * as TYPES from '../store/type';
 
 const { VITE_RUNTIME_PATH, VITE_ENTRY_PATH, VITE_PREVIEW_PATH } = import.meta.env;
@@ -68,6 +87,8 @@ const defaultSelected = ref(dsl.items[0]?.id);
 const propsValues = ref<Record<string, any>>({});
 const propsConfigs = ref<Record<string, any>>({});
 const eventMethodList = ref<Record<string, any>>({});
+const publishTimingDialog = ref(false);
+const publishTiming = ref(null);
 const stageRect = ref({
   width: 375,
   height: 817,
@@ -103,7 +124,7 @@ const menu: MenuBarData = {
   left: [
     {
       type: 'text',
-      text: '魔方',
+      text: '页面编辑器',
     },
   ],
   center: ['delete', 'undo', 'redo', 'guides', 'rule', 'zoom'],
@@ -149,6 +170,48 @@ const menu: MenuBarData = {
         // ElMessage.success('保存成功');
       },
     },
+    {
+      type: 'button',
+      text: '发布',
+      icon: Coin,
+      handler: (services) => {
+        ElMessageBox.confirm('是否马上发布', {
+          confirmButtonText: '马上发布',
+          cancelButtonText: '定时发布',
+          type: 'warning',
+        })
+          .then(async () => {
+            if (services?.editorService.get<Map<Id, Id>>('modifiedNodeIds').size > 0) {
+              try {
+                await ElMessageBox.confirm('有修改未保存，是否先保存再预览', '提示', {
+                  confirmButtonText: '保存并预览',
+                  cancelButtonText: '预览',
+                  type: 'warning',
+                });
+                await save();
+                ElMessage.success('保存成功');
+                updatePageStatus({
+                  id: pageId,
+                  type: 1,
+                }).then((res) => {
+                  ElMessage.success('发布成功');
+                });
+              } catch (e) {
+                console.error(e);
+              }
+            }
+            updatePageStatus({
+              id: pageId,
+              type: 1,
+            }).then((res) => {
+              ElMessage.success('发布成功');
+            });
+          })
+          .catch(() => {
+            publishTimingDialog.value = true;
+          });
+      },
+    },
     '/',
     {
       type: 'button',
@@ -176,6 +239,17 @@ const moveableOptions = (core?: StageCore): MoveableOptions => {
   options.rotatable = !isPage;
 
   return options;
+};
+const handleDelayPublish = async () => {
+  await save();
+  updatePageStatus({
+    id: pageId,
+    type: 1,
+    publishTiming: publishTiming.value,
+  }).then((res) => {
+    ElMessage.success('定时发布成功');
+    publishTimingDialog.value = false;
+  });
 };
 
 const save = async () => {

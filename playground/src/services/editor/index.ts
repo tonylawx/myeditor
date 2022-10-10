@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
-import { request } from '../../utils/request';
+import { request } from "../../utils/request";
 
 const { VITE_DSL_PATH } = import.meta.env;
 
@@ -171,6 +171,13 @@ export function getAppletLinkList() {
 export function getConfPageList(data: any) {
   return request({
     url: '/bdw-component-decoration-admin/activity/page/list',
+    method: 'POST',
+    data,
+  });
+}
+export function updatePageStatus(data: any) {
+  return request({
+    url: '/bdw-component-decoration-admin/activity/page/upOrDown',
     method: 'POST',
     data,
   });
