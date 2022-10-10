@@ -19,6 +19,8 @@
     "build": "pnpm --filter \"@tmagic/*\" build",
     "build:runtime:admin": "pnpm --filter \"runtime-*\" build:admin",
     "build:playground": "pnpm --filter \"runtime-vue3\" build && pnpm --filter \"tmagic-playground\" build",
+    "build:playground:uat": "pnpm --filter \"runtime-vue3\" build && pnpm --filter \"tmagic-playground\" build:uat",
+    "build:playground:dev": "pnpm --filter \"runtime-vue3\" build && pnpm --filter \"tmagic-playground\" build:dev",
     "docs": "pnpm --filter \"docs\" dev",
     "build:docs": "pnpm --filter \"docs\" build",
     "reinstall": "pnpm clean:all && pnpm bootstrap",

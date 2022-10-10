@@ -2,6 +2,9 @@ import axios from 'axios';
 
 import { request } from '../../utils/request';
 
+const { VITE_DSL_PATH } = import.meta.env;
+
+
 const menuPrefix = '/system';
 export async function getRouter(backMenu = true) {
   return request({
@@ -24,7 +27,7 @@ export function uploadOssJSON(params: IJSON) {
 
 export function getDSL(pageId: string) {
   return axios({
-    url: `https://uat.img.betterwood.com/sys/hotelArea/json/${pageId}.json?stamp=${new Date().getTime()}`,
+    url: `${VITE_DSL_PATH}${pageId}.json?stamp=${new Date().getTime()}`,
     method: 'GET',
   });
 }
@@ -154,5 +157,11 @@ export function getActEnum() {
       current: 1,
       size: 9999,
     },
+  });
+}
+export function getAppletLinkList() {
+  return request({
+    url: '/bdw-component-decoration-admin/activity/page/applet/path',
+    method: 'POST',
   });
 }

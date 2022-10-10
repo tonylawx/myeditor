@@ -57,7 +57,7 @@ import { getDSL, newPage, updatePage, uploadOssJSON } from '../services/editor';
 import { useMainStore } from '../store/main';
 import * as TYPES from '../store/type';
 
-const { VITE_RUNTIME_PATH, VITE_ENTRY_PATH } = import.meta.env;
+const { VITE_RUNTIME_PATH, VITE_ENTRY_PATH, VITE_PREVIEW_PATH } = import.meta.env;
 
 const runtimeUrl = `${VITE_RUNTIME_PATH}/playground/index.html`;
 // const router = useRouter();
@@ -74,7 +74,7 @@ const stageRect = ref({
 });
 const store = useMainStore();
 // const previewUrl = computed(() => `${VITE_RUNTIME_PATH}/page/index.html?localPreview=1&page=${editor.value?.editorService.get('page').id}`);
-const previewUrl = computed(() => `https://uath5.betterwood.com/#/magic?pageId=${store.pageId}&isPreview=1`);
+const previewUrl = computed(() => `${VITE_PREVIEW_PATH}?pageId=${store.pageId}&isPreview=1`);
 const params = new URLSearchParams(window.location.search);
 const status = params.get('status'); // copy edit
 let pageId = params.get('pageId') || undefined;
