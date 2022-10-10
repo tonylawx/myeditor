@@ -1,10 +1,16 @@
 import { MComponent } from '../../../../ui/src/types';
 
-export type LinkOptions = {
-  type: 'H5' | 'MiniProgram' | 'Video'; // 1：商城小程序页面 2：商城小程序商品详情页 3：商城小程序商品分组 4：会场页面 5：视频号直播 6：自定义链接
-  url: string;
-  appId?: ''
-};
+export type LinkOptions =
+  | {
+    type: 'H5' | 'MiniProgram'; // 1：商城小程序页面 2：商城小程序商品详情页 3：商城小程序商品分组 4：会场页面 5：视频号直播 6：自定义链接
+    url: string;
+    appId?: '';
+  }
+  | {
+    type: 'Live';
+    finderUserName: string;
+    feedId: string;
+  };
 export interface IImgItem {
   url: string;
   height: number;

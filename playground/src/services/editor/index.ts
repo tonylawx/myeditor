@@ -4,7 +4,6 @@ import { request } from '../../utils/request';
 
 const { VITE_DSL_PATH } = import.meta.env;
 
-
 const menuPrefix = '/system';
 export async function getRouter(backMenu = true) {
   return request({
@@ -139,14 +138,18 @@ export function getGoodList(data: Partial<IGoodsParams>) {
     data,
   });
 }
-export function getGoodGroupList() {
+export function getGoodGroupList(data: any) {
   return request({
     url: '/bdw-component-decoration-admin/merchStore/pageGoodsGroupList',
     method: 'POST',
-    data: {
-      current: 1,
-      size: 9999,
-    },
+    data: Object.assign(
+      {},
+      {
+        current: 1,
+        size: 9999,
+      },
+      data,
+    ),
   });
 }
 export function getActEnum() {
@@ -163,5 +166,12 @@ export function getAppletLinkList() {
   return request({
     url: '/bdw-component-decoration-admin/activity/page/applet/path',
     method: 'POST',
+  });
+}
+export function getConfPageList(data: any) {
+  return request({
+    url: '/bdw-component-decoration-admin/activity/page/list',
+    method: 'POST',
+    data,
   });
 }

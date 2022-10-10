@@ -16,4 +16,8 @@
  * limitations under the License.
  */
 
-export default {};
+export default {
+  options: {
+    bottomDis: 150,
+  },
+};

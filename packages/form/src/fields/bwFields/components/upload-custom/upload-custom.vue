@@ -117,7 +117,6 @@ import { delFromOss, uploadToOss } from '../../utils/oss';
 
 import { getImageData, handlePreview } from './utils';
 
-const { VITE_ENV = 'dev' } = import.meta.env;
 const $emit = defineEmits(['successCallback', 'update:fileList', 'update:url']);
 
 const props = withDefaults(
@@ -143,7 +142,7 @@ const props = withDefaults(
     url?: string;
   }>(),
   {
-    env: VITE_ENV, // 上传oss的环境 'test' | 'dev' | 'uat' | 'prod'
+    env: 'dev', // 上传oss的环境 'test' | 'dev' | 'uat' | 'prod'
     filePath: '', // 图片上传的路径
     ossConfig: {} as any, // ossConfig配置
     dsn: 'img.betterwood.com',
