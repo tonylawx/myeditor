@@ -51,9 +51,9 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { defineEmits, defineProps, ref } from 'vue';
+import {defineEmits, defineProps, ref} from 'vue';
 import Daggable from 'vuedraggable';
-import { find, findIndex } from 'lodash-es';
+import {find, findIndex} from 'lodash-es';
 
 import {
   IPageParams,
@@ -103,7 +103,7 @@ const handleUpdate = () => {
   const pageId = JSON.parse(localStorage.getItem('pageId') || '');
   const comsId = new Date().getTime();
   const tmp = {
-    id: pageId,
+   pageId,
     components: [
       ...goods.value.map(item => ({
         paramValue: item.times,

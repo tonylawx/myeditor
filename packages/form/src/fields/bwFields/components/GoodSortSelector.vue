@@ -73,11 +73,11 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { defineEmits, defineProps, nextTick, reactive, ref, watch } from 'vue';
+import {defineEmits, defineProps, nextTick, reactive, ref, watch} from 'vue';
 import Daggable from 'vuedraggable';
-import { ElMessage, ElTable } from 'element-plus';
+import {ElMessage, ElTable} from 'element-plus';
 // 对话框flag
-import { cloneDeep, findIndex, uniqBy } from 'lodash-es';
+import {cloneDeep, findIndex, uniqBy} from 'lodash-es';
 
 import {
   Data,
@@ -164,7 +164,7 @@ const handleUpdate = () => {
   const pageId = JSON.parse(localStorage.getItem('pageId') || '');
   const comsId = new Date().getTime();
   const tmp = {
-    id: pageId,
+     pageId,
     components: [
       ...goods.value.map(item => ({
         paramId: item.goodsId,
