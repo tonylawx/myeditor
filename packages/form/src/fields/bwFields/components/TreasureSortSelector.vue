@@ -59,7 +59,7 @@ import {
   IPageParams,
   ITreasureItem,
   queryTreasureList,
-  updatePage,
+  updateComponent,
 } from '../../../../../../playground/src/services/editor';
 
 const goods = ref<ITreasureItem[]>([]);
@@ -105,17 +105,15 @@ const handleUpdate = () => {
   const tmp = {
     id: pageId,
     components: [
-      {
-        components: goods.value.map(item => ({
-          paramValue: item.times,
-          paramId: item.id,
-          componentType: '3',
-        })),
-        comsId,
-      },
+      ...goods.value.map(item => ({
+        paramValue: item.times,
+        paramId: item.id,
+        componentType: '3',
+      })),
     ],
+    comsId,
   };
-  updatePage(tmp as unknown as Partial<IPageParams>).then(() => {
+  updateComponent(tmp as unknown as Partial<IPageParams>).then(() => {
     emits('update:compId', comsId);
   });
 };

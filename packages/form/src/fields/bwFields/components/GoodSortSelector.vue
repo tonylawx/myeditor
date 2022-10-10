@@ -73,11 +73,11 @@
   </div>
 </template>
 <script lang="ts" setup>
-import {defineEmits, defineProps, nextTick, reactive, ref, watch} from 'vue';
+import { defineEmits, defineProps, nextTick, reactive, ref, watch } from 'vue';
 import Daggable from 'vuedraggable';
-import {ElMessage, ElTable} from 'element-plus';
+import { ElMessage, ElTable } from 'element-plus';
 // 对话框flag
-import {cloneDeep, findIndex, uniqBy} from 'lodash-es';
+import { cloneDeep, findIndex, uniqBy } from 'lodash-es';
 
 import {
   Data,
@@ -86,7 +86,7 @@ import {
   IGoodsItem,
   IGoodsParams,
   IPageParams,
-  updatePage,
+  updateComponent,
 } from '../../../../../../playground/src/services/editor';
 
 const goods = ref<IGoodsItem[]>([]);
@@ -166,16 +166,14 @@ const handleUpdate = () => {
   const tmp = {
     id: pageId,
     components: [
-      {
-        components: goods.value.map(item => ({
-          paramId: item.goodsId,
-          componentType: '1',
-        })),
-        comsId,
-      },
+      ...goods.value.map(item => ({
+        paramId: item.goodsId,
+        componentType: '1',
+      })),
     ],
+    comsId,
   };
-  updatePage(tmp as unknown as Partial<IPageParams>).then(() => {
+  updateComponent(tmp as unknown as Partial<IPageParams>).then(() => {
     emits('update:compId', comsId);
   });
 };

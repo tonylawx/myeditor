@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 
-import { request } from "../../utils/request";
+import { request } from '../../utils/request';
 
 const { VITE_DSL_PATH } = import.meta.env;
 
@@ -88,6 +88,13 @@ export function newPage(data: Partial<IPageParams>) {
 export function updatePage(data: Partial<IPageParams>) {
   return request({
     url: '/bdw-component-decoration-admin/activity/page/edit',
+    method: 'POST',
+    data,
+  });
+}
+export function updateComponent(data: Partial<IPageParams>) {
+  return request({
+    url: '/bdw-component-decoration-admin/activity/page/editComs',
     method: 'POST',
     data,
   });
