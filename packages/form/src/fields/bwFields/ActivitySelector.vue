@@ -19,7 +19,10 @@ const props = defineProps({
 });
 useAddField(props.prop);
 
-const options = ref([])
+const options = ref<{
+  activityName:string
+  id:string
+}[]>([])
 onMounted(()=>{
   getActEnum().then(res=>{
     options.value = res

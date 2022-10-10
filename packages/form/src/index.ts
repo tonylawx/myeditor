@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-import { App } from 'vue';
+import {App} from 'vue';
 
 import Container from './containers/Container.vue';
 import Fieldset from './containers/Fieldset.vue';
@@ -26,20 +26,7 @@ import Row from './containers/Row.vue';
 import MStep from './containers/Step.vue';
 import Table from './containers/Table.vue';
 import Tabs from './containers/Tabs.vue';
-import ActivitySelector from './fields/bwFields/ActivitySelector.vue';
-import BackgroundSelector from './fields/bwFields/BackgroundSelector.vue';
-import UploadPicture from './fields/bwFields/basisField/UploadPicture.vue';
-import CountdownConfig from './fields/bwFields/CountdownConfig.vue';
-import GoodsBillboardSelector from './fields/bwFields/GoodsBillboardSelector.vue';
-import GoodsGroupSelector from './fields/bwFields/GoodsGroupSelector.vue';
-import GoodsListSelector from './fields/bwFields/GoodsListSelector.vue';
-import HoverWindowConfig from './fields/bwFields/HoverWindowConfig.vue';
-import NavConfig from './fields/bwFields/NavConfig.vue';
-import PictureSelector from './fields/bwFields/PictureSelector.vue';
-import RichText from './fields/bwFields/RichText.vue';
-import TitleConfig from './fields/bwFields/TitleConfig.vue';
-import TreasureSelector from './fields/bwFields/TreasureSelector.vue';
-import VideoConfig from './fields/bwFields/VideoConfig.vue';
+
 import Cascader from './fields/Cascader.vue';
 import Checkbox from './fields/Checkbox.vue';
 import CheckboxGroup from './fields/CheckboxGroup.vue';
@@ -58,9 +45,24 @@ import Switch from './fields/Switch.vue';
 import Text from './fields/Text.vue';
 import Textarea from './fields/Textarea.vue';
 import Time from './fields/Time.vue';
-import { setConfig } from './utils/config';
+import {setConfig} from './utils/config';
 import Form from './Form.vue';
 import FormDialog from './FormDialog.vue';
+import VideoConfig from './fields/bwFields/VideoConfig.vue';
+import TreasureSelector from './fields/bwFields/TreasureSelector.vue';
+import TitleConfig from './fields/bwFields/TitleConfig.vue';
+import RichText from './fields/bwFields/RichText.vue';
+import PictureSelector from './fields/bwFields/PictureSelector.vue';
+import NavConfig from './fields/bwFields/NavConfig.vue';
+import HoverWindowConfig from './fields/bwFields/HoverWindowConfig.vue';
+import GoodsListSelector from './fields/bwFields/GoodsListSelector.vue';
+import GoodsGroupSelector from './fields/bwFields/GoodsGroupSelector.vue';
+import GoodsBillboardSelector from './fields/bwFields/GoodsBillboardSelector.vue';
+import CountdownConfig from './fields/bwFields/CountdownConfig.vue';
+import BackgroundSelector from './fields/bwFields/BackgroundSelector.vue';
+import ActivitySelector from './fields/bwFields/ActivitySelector.vue';
+import UploadPicture from './fields/bwFields/basisField/UploadPicture.vue';
+
 
 import './theme/index.scss';
 import 'vue-cropper/dist/index.css';
@@ -97,17 +99,20 @@ export { default as MLink } from './fields/Link.vue';
 export { default as MSelect } from './fields/Select.vue';
 export { default as MCascader } from './fields/Cascader.vue';
 export { default as MDynamicField } from './fields/DynamicField.vue';
-export { default as GoodsGroupSelector } from './fields/bwFields/GoodsGroupSelector.vue';
-export { default as PictureSelector } from './fields/bwFields/PictureSelector.vue';
-export { default as TitleConfig } from './fields/bwFields/TitleConfig.vue';
-export { default as VideoConfig } from './fields/bwFields/VideoConfig.vue';
-export { default as CountdownConfig } from './fields/bwFields/CountdownConfig.vue';
-export { default as HoverWindowConfig } from './fields/bwFields/HoverWindowConfig.vue';
-export { default as GoodsListSelector } from './fields/bwFields/GoodsListSelector.vue';
-export { default as RichText } from './fields/bwFields/RichText.vue';
-export { default as TreasureSelector } from './fields/bwFields/TreasureSelector.vue';
-export { default as NavConfig } from './fields/bwFields/NavConfig.vue';
-export { default as GoodsBillboardSelector } from './fields/bwFields/GoodsBillboardSelector.vue';
+export { default as MGoodsGroupSelector } from './fields/bwFields/GoodsGroupSelector.vue';
+export { default as MPictureSelector } from './fields/bwFields/PictureSelector.vue';
+export { default as MTitleConfig } from './fields/bwFields/TitleConfig.vue';
+export { default as MVideoConfig } from './fields/bwFields/VideoConfig.vue';
+export { default as MCountdownConfig } from './fields/bwFields/CountdownConfig.vue';
+export { default as MHoverWindowConfig } from './fields/bwFields/HoverWindowConfig.vue';
+export { default as MGoodsListSelector } from './fields/bwFields/GoodsListSelector.vue';
+export { default as MRichText } from './fields/bwFields/RichText.vue';
+export { default as MTreasureSelector } from './fields/bwFields/TreasureSelector.vue';
+export { default as MNavConfig } from './fields/bwFields/NavConfig.vue';
+export { default as MGoodsBillboardSelector } from './fields/bwFields/GoodsBillboardSelector.vue';
+export { default as MActivitySelector } from './fields/bwFields/ActivitySelector.vue';
+export { default as MBackgroundSelector } from './fields/bwFields/BackgroundSelector.vue';
+export { default as MUploadPicture } from './fields/bwFields/basisField/UploadPicture.vue';
 
 const defaultInstallOpt = {};
 

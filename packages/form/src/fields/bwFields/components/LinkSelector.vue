@@ -254,7 +254,7 @@ const getGoodGroupTableData = () => {
 const getConferencePageList = () => {
   loading.value = true;
   getConfPageList(searchParams as Partial<IGoodsParams>)
-    .then((res: Data) => {
+    .then((res: any) => {
       confPageListTableData.value = res.rows;
       total.value = res.total;
     })

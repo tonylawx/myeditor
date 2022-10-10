@@ -138,7 +138,7 @@ export function getGoodList(data: Partial<IGoodsParams>) {
     data,
   });
 }
-export function getGoodGroupList(data: any) {
+export function getGoodGroupList(data?: any) {
   return request({
     url: '/bdw-component-decoration-admin/merchStore/pageGoodsGroupList',
     method: 'POST',
