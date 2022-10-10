@@ -152,16 +152,16 @@
 
 <script lang="ts">
 /* eslint-disable no-param-reassign */
-import { computed, defineComponent, inject, onMounted, PropType, ref, toRefs } from 'vue';
-import { ArrowDown, ArrowUp, Delete, FullScreen, Grid } from '@element-plus/icons-vue';
-import { ElMessage, UploadFile } from 'element-plus';
-import { cloneDeep } from 'lodash-es';
-import Sortable, { SortableEvent } from 'sortablejs';
+import {computed, defineComponent, inject, onMounted, PropType, ref, toRefs} from 'vue';
+import {ArrowDown, ArrowUp, Delete, FullScreen, Grid} from '@element-plus/icons-vue';
+import {ElMessage, UploadFile} from 'element-plus';
+import {cloneDeep} from 'lodash-es';
+import Sortable, {SortableEvent} from 'sortablejs';
 
-import { asyncLoadJs, sleep } from '@tmagic/utils';
+import {asyncLoadJs, sleep} from '@tmagic/utils';
 
-import { ColumnConfig, FormState, SortProp, TableConfig } from '../schema';
-import { display, initValue } from '../utils/form';
+import {ColumnConfig, FormState, SortProp, TableConfig} from '../schema';
+import {display, initValue} from '../utils/form';
 
 let loadedAMapJS = false; // 是否加载完js
 let firstLoadingAMapJS = true; // 否是第一次请求
@@ -306,6 +306,7 @@ export default defineComponent({
         if (length >= enumValues.length) {
           return;
         }
+        //@ts-ignore
         enumV = enumValues.filter((item) => {
           let i = 0;
           for (; i < length; i++) {

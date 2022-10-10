@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "declaration": true,
+    "noImplicitAny": false,
     "declarationDir": "types",
     "forceConsistentCasingInFileNames": true,
     "paths": {},

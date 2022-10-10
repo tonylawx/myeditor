@@ -6,6 +6,8 @@
     "declarationDir": "types",
     "forceConsistentCasingInFileNames": true,
     "paths": {},
+    "noImplicitAny": false,
+    "strict": false
   },
   "include": [
 		"src"
