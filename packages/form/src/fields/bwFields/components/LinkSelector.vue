@@ -175,7 +175,7 @@
       </template>
     </el-dialog>
     <div>
-      <div v-if="props.linkOption.url">
+      <div v-if="props.linkOption.url || props.linkOption.type === 'Live'">
         {{ urlName }}
         <el-button @click="handleOpen">修改链接</el-button>
       </div>
