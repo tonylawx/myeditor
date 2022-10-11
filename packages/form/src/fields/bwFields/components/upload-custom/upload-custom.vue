@@ -103,19 +103,19 @@
 </template>
 
 <script lang="ts" setup>
-import { defineEmits, defineProps, onMounted, ref } from 'vue';
-import { VueCropper } from 'vue-cropper';
-import { Upload } from 'ant-design-vue';
-import { FileType } from 'ant-design-vue/es/upload/interface';
-import { ElMessage as message } from 'element-plus';
+import {defineEmits, defineProps, onMounted, ref} from 'vue';
+import {VueCropper} from 'vue-cropper';
+import {Upload} from 'ant-design-vue';
+import {FileType} from 'ant-design-vue/es/upload/interface';
+import {ElMessage as message} from 'element-plus';
 import mimeTypes from 'mime-types';
 import short from 'short-uuid';
 
 import 'ant-design-vue/es/upload/style/css';
 
-import { delFromOss, uploadToOss } from '../../utils/oss';
+import {delFromOss, uploadToOss} from '../../utils/oss';
 
-import { getImageData, handlePreview } from './utils';
+import {getImageData, handlePreview} from './utils';
 
 const $emit = defineEmits(['successCallback', 'update:fileList', 'update:url']);
 
