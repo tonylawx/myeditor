@@ -16,14 +16,4 @@
  * limitations under the License.
  */
 
-export default {
-  options: {
-    bgUrl: '',
-    link: {
-      type: 'H5',
-      appId: '',
-      url: '',
-    },
-    bottomDis: 150,
-  },
-};
+export default {};

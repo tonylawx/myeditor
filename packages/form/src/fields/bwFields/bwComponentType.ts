@@ -89,6 +89,7 @@ export interface MCountCom extends MComponent {
   activityName: string;
   startTime: string;
   endTime: string;
+  styleType: 'light'| 'deep'
 }
 
 /* floatcom(悬浮窗组件) */
