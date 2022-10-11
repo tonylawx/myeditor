@@ -244,7 +244,7 @@ const handleDelayPublish = async () => {
   await save();
   updatePageStatus({
     id: pageId,
-    type: 1,
+    type: 2,
     publishTiming: publishTiming.value,
   }).then((res) => {
     ElMessage.success('定时发布成功');
