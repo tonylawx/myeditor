@@ -103,7 +103,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineEmits, defineProps, ref } from 'vue';
+import { defineEmits, defineProps, onMounted, ref } from 'vue';
 import { VueCropper } from 'vue-cropper';
 import { Upload } from 'ant-design-vue';
 import { FileType } from 'ant-design-vue/es/upload/interface';
@@ -426,4 +426,12 @@ const handleCropper = async () => {
     cropperVisible.value = false;
   });
 };
+onMounted(() => {
+  if (props.urlModel && props.url) {
+    fileList.value.push({
+      name: props.url,
+      url: props.url,
+    });
+  }
+});
 </script>
