@@ -22,8 +22,8 @@
     <div class="good-sort-selector__hint">{{ hint }}</div>
     <el-dialog v-model="dialogVisible" title="法宝" width="500">
       <el-form lable-postion="left">
-        <el-form-item label="选择法宝" :rules="[{ required: true }]">
-          <el-select v-model="treasureId">
+        <el-form-item label="选择法宝" >
+          <el-select v-model="treasureId" filterable>
             <el-option
               v-for="item in options"
               :key="item.id"
@@ -36,7 +36,6 @@
           style="margin-top: 10px"
           label="领取次数"
           min="1"
-          :rules="[{ required: true }]"
         >
           <el-input type="number" v-model="times" />
         </el-form-item>
@@ -51,9 +50,9 @@
   </div>
 </template>
 <script lang="ts" setup>
-import {defineEmits, defineProps, ref} from 'vue';
+import { defineEmits, defineProps, ref } from 'vue';
 import Daggable from 'vuedraggable';
-import {find, findIndex} from 'lodash-es';
+import { find, findIndex } from 'lodash-es';
 
 import {
   IPageParams,
@@ -103,7 +102,7 @@ const handleUpdate = () => {
   const pageId = JSON.parse(localStorage.getItem('pageId') || '');
   const comsId = new Date().getTime();
   const tmp = {
-   pageId,
+    pageId,
     components: [
       ...goods.value.map(item => ({
         paramValue: item.times,
