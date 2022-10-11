@@ -1,16 +1,23 @@
+<style scoped lang="scss">
+.com {
+  background: #2f54eb;
+  text-align: center;
+  padding-top: 20px;
+  width: 100%;
+  height: 200px;
+}
+</style>
 <template>
-<!--  <div>-->
-<!--    <div v-for="(item, index) in fieldNames" :key="index">-->
-<!--      {{ item }}:-->
-<!--      <pre>{{ JSON.stringify(config[item], null, 4) }}</pre>-->
-<!--    </div>-->
-<!--  </div>-->
-  <div style="background: #2f54eb;text-align: center;padding-top: 20px" >
-    商品分组组件
-  </div>
+  <!--  <div>-->
+  <!--    <div v-for="(item, index) in fieldNames" :key="index">-->
+  <!--      {{ item }}:-->
+  <!--      <pre>{{ JSON.stringify(config[item], null, 4) }}</pre>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <div class="com">商品分组组件</div>
 </template>
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import {defineProps} from 'vue';
 
 import formConfig from './formConfig';
 

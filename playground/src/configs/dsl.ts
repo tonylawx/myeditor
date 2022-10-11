@@ -25,7 +25,7 @@ export default {
       layout: 'relative',
       style: {
         width: '100%',
-        height: '100%',
+        height: 'auto',
         position: 'relative',
         top: 0,
         left: 0,
